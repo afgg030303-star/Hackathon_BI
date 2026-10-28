@@ -40,8 +40,9 @@ La tabla debe existir previamente y ser accesible por el usuario configurado.
 
 ## Estado de validación
 
-La conexión real está pendiente de configurar la contraseña de Supabase y ejecutar
-la prueba. No se han importado datos ni se ha verificado el contenido de la tabla.
+La conexión real se verificó el 28/10/2026 con TLS mediante Session pooler.
+La tabla existente ventas_superstore tiene 9.800 filas. No se han modificado datos.
+El segundo ordenador debe configurar su propio .env y verificar la conexión.
 Las dependencias se dejan sin fijar según la lista solicitada; convendrá registrar
 las versiones del entorno una vez validado para reproducir la entrega.
 
