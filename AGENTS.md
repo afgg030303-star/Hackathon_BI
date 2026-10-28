@@ -7,7 +7,7 @@ Hackathon de BI con datos reales, PostgreSQL/Supabase, agente, Skill, MCP, backe
 - Repositorio: https://github.com/afgg030303-star/Hackathon_BI .
 - Supabase compartido: gvsxekaqeodljocyqkfo. No crear otro proyecto para el segundo ordenador.
 - Revisar git status y traer los cambios remotos antes de empezar. No sobrescribir cambios locales ni hacer force push.
-- Trabajar en una rama propia por tarea; integrar mediante pull request. Evitar editar simultáneamente los mismos archivos.
+- Trabajar en una rama propia por tarea; integrar mediante pull request. Excepción para la preparación inicial: se permite avance directo de main si no hay divergencia ni cambios ajenos y se verifica el remoto. Evitar editar simultáneamente los mismos archivos.
 - Al terminar cada bloque, registrar qué cambió, pruebas realizadas y pendientes en un archivo nuevo de 00_prompts_ia; actualizar el estado si corresponde. Hacer commit de los archivos revisados y push a la rama de trabajo cuando el acceso esté disponible. Si falla, informar del estado local y remoto por separado.
 - No hay sincronización continua: commit guarda localmente; push sube a GitHub; fetch/pull trae cambios. Los chats completos no se exportan automáticamente mediante Git.
 - Registrar prompts y respuestas disponibles de esta sesión sin secretos; identificar resúmenes como resúmenes. No inventar conversaciones anteriores.

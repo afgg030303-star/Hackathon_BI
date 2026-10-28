@@ -13,3 +13,6 @@ Se comprueba que origin/main solo contiene un README inicial. Se inicializa Git 
 El conector GitHub usa 872587-ai y reporta push=false. La publicación requiere una cuenta con escritura. Los chats no se sincronizan solos: el contexto compartido se registra en archivos. La base de datos es una única instancia compartida, las credenciales se configuran localmente en cada equipo.
 
 Ver ESTADO_PROYECTO.md para el resultado efectivo de publicación y conexión. No se ha desarrollado todavía el agente de BI.
+
+## Resultado de publicación
+La usuaria confirma que es colaboradora. GitHub Desktop publica como evatrigolahoz y Git local también puede hacer push. El conector usa otra cuenta y no permite crear PR (403). Se incorpora la preparación inicial mediante avance directo de main tras comprobar que no hay divergencia. Las siguientes tareas se repartirán en ramas. Supabase sigue pendiente de contraseña local; nunca se pidió en el chat.
