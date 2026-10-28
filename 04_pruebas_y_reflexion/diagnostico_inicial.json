@@ -1,0 +1,32 @@
+{
+  "fecha": "2026-10-28",
+  "archivo": "train.csv",
+  "sha256": "dbb0f167b27ccf02d7ff8cb0446a9abc6dbc3522e83cf9daa6939801acfdd196",
+  "filas": 9800,
+  "columnas": [
+    "Row ID",
+    "Order ID",
+    "Order Date",
+    "Ship Date",
+    "Ship Mode",
+    "Customer ID",
+    "Customer Name",
+    "Segment",
+    "Country",
+    "City",
+    "State",
+    "Postal Code",
+    "Region",
+    "Product ID",
+    "Category",
+    "Sub-Category",
+    "Product Name",
+    "Sales"
+  ],
+  "columnas_ausentes_para_rentabilidad": [
+    "Profit",
+    "Discount"
+  ],
+  "conexion_supabase": "no ejecutada: credenciales placeholder",
+  "agente_mcp_frontend": "no implementados"
+}
