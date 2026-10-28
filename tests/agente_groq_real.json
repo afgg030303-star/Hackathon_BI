@@ -1,0 +1,35 @@
+{
+  "answer": "**Hallazgo**  \nEl importe neto de ventas en Francia durante todo el periodo disponible (01 dic 2010 – 09 dic 2011) es **£197 403,90**.\n\n**Cifras verificables**  \n- Ventas positivas: £209 715,11  \n- Cancelaciones: £12 311,21  \n- Otros ajustes negativos: £0  \n- Neto = 209 715,11 – 12 311,21 = £197 403,90  \n\n**Recomendación**  \nAnalizar las cancelaciones (12 311,21 £) para identificar posibles causas (errores de facturación, devoluciones, etc.) y reducirlas, lo que aumentaría el importe neto.\n\n**Limitación**  \nEl cálculo se basa únicamente en el dataset UCI Online Retail; no se incluyen costes ni márgenes, por lo que no se puede estimar beneficio.",
+  "evidence": [
+    {
+      "tool": "resumen_ventas",
+      "arguments": {
+        "desde": "2010-12-01",
+        "hasta": "2011-12-09",
+        "pais": "France"
+      },
+      "result": {
+        "fuente": "UCI Online Retail",
+        "moneda": "GBP",
+        "desde": "2010-12-01",
+        "hasta": "2011-12-09",
+        "pais": "France",
+        "limites": "Importe neto no es beneficio; no hay costes. Cancelación no prueba devolución física. Diciembre 2011 es parcial.",
+        "metricas": {
+          "lineas": 8557,
+          "pedidos_venta": 392,
+          "ventas_positivas": "209715.11",
+          "cancelaciones": "12311.21",
+          "otros_ajustes_negativos": "0",
+          "importe_neto": "197403.90",
+          "lineas_fuera_kpi": 1
+        }
+      },
+      "transport": "MCP stdio"
+    }
+  ],
+  "request_id": "7ac9c7f4-3b57-4440-9af3-479ece741688",
+  "model": "openai/gpt-oss-20b",
+  "mode": "agente_groq",
+  "duration_seconds": 2.95
+}

@@ -16,4 +16,4 @@ if ! curl -fsS http://127.0.0.1:11434/api/tags >/dev/null 2>&1; then
   fi
 fi
 echo 'Abre http://127.0.0.1:8000 . Ctrl+C detiene la API.'
-exec .venv/bin/python -m uvicorn main:app --app-dir 02_backend_y_mcp --host 127.0.0.1 --port 8000
+exec .venv/bin/python -m uvicorn main:app --app-dir backend --host 127.0.0.1 --port 8000

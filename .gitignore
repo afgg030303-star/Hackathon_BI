@@ -9,5 +9,5 @@ __pycache__/
 .local-runtime/
 .runtime/
 .pytest_cache/
-01_investigacion_y_datos/originales/
-01_investigacion_y_datos/datos_preparados.csv
+data/originales/
+data/datos_preparados.csv

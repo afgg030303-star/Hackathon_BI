@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "observatorio-retail": {
+      "command": "python",
+      "args": ["backend/mcp_server.py"]
+    }
+  }
+}
