@@ -18,7 +18,7 @@ cd Hackathon_BI
 
 2. Abrir esa carpeta en Codex. Pedir: «Lee AGENTS.md, ESTADO_PROYECTO.md y COLABORACION.md; revisa la rama y los cambios pendientes antes de continuar».
 3. Crear .env a partir de .env.example únicamente si no existe. Introducir la URI real de Supabase localmente. No enviarla por chat ni incluirla en GitHub.
-4. Preparar Python y dependencias según README. Verificar primero la conexión con comprobar_supabase.py; test_db.py además requiere la tabla ventas_superstore.
+4. Preparar Python 3.13 y un entorno virtual; instalar las dependencias mínimas con `python -m pip install -r 02_backend_y_mcp/requirements-db.txt`. Verificar primero la conexión con comprobar_supabase.py; test_db.py además requiere la tabla ventas_superstore.
 
 ## Trabajo simultáneo
 Acordar tareas distintas: equipo A backend/MCP/datos, equipo B frontend/documentación. Las migraciones y cargas de datos las ejecuta una sola persona.
@@ -52,3 +52,5 @@ python 02_backend_y_mcp/comprobar_supabase.py
 ```
 
 La prueba usa TLS y solo lectura, identifica el proyecto mediante el host/usuario de conexión y lista tablas públicas. No modifica datos. Una conexión correcta no implica que el dataset esté importado.
+
+Fuente sobre conexiones Supabase: https://supabase.com/docs/guides/database/connecting-to-postgres

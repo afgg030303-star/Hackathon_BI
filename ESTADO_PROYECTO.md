@@ -8,10 +8,12 @@
 Git inicializado conservando el historial remoto; instrucciones AGENTS.md, guía COLABORACION.md, plantilla .env.example, registro de sesión y prueba de conexión sin dependencia de tablas. La carpeta .env está excluida de Git. El agente BI, MCP y frontend todavía no están implementados.
 
 ## Verificación pendiente
-- Publicación de esta preparación: consultar rama setup/colaboracion y comparar con origin; un commit local no demuestra que se haya subido.
-- Conector GitHub del chat: 872587-ai, permiso de lectura. La usuaria confirma ser colaboradora; GitHub Desktop utiliza evatrigolahoz y se está comprobando esa vía.
+- Primera publicación verificada: commit d592acc en origin/setup/colaboracion mediante GitHub Desktop (evatrigolahoz). La integración en main se tramita mediante pull request.
+- Conector GitHub del chat: 872587-ai, permiso de lectura. La usuaria confirma ser colaboradora; publicación con GitHub Desktop como evatrigolahoz comprobada.
 - Supabase: DATABASE_URL sigue con contraseña de ejemplo; no hay conexión real verificada. Introducir credencial local y ejecutar comprobar_supabase.py.
 - Segundo ordenador: clonar repositorio, traer la rama integrada y configurar su propio .env; validar conexión desde ese equipo.
+
+- Entorno local .venv creado con Python 3.13; instalados psycopg2-binary 2.9.13 y python-dotenv 1.2.4. La prueba se ejecuta y detecta correctamente el placeholder; conexión real pendiente.
 
 ## Trabajo posterior
 Completar colaboración antes de desarrollar. Luego seguir PLAN_DE_TRABAJO.md. No usar el CSV local como prueba de datos reales ni afirmar beneficio/descuento inexistentes. Cada integrante redactará su reflexión real.
