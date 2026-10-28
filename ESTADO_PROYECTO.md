@@ -1,22 +1,15 @@
-# Estado para continuar — 28/10/2026
+# Estado — primer prototipo, 28/10/2026
 
-## Destinos acordados
-- GitHub: https://github.com/afgg030303-star/Hackathon_BI
-- Supabase: gvsxekaqeodljocyqkfo (Hackathon-BI).
+Rama de desarrollo: desarrollo/agente-bi. Cada bloque se sube a GitHub. El usuario prioriza construir ya y no quiere API de pago.
 
-## Preparado
-Git inicializado conservando el historial remoto; instrucciones AGENTS.md, guía COLABORACION.md, plantilla .env.example, registro de sesión y prueba de conexión sin dependencia de tablas. La carpeta .env está excluida de Git. El agente BI, MCP y frontend todavía no están implementados.
+## Implementado
+- Carga transaccional UCI a tabla nueva ventas_uci: 541.909 filas y suma original 9.747.747,934 GBP conciliadas. ventas_superstore se conserva.
+- PostgreSQL con consultas de solo lectura y parámetros; 3 herramientas MCP; cliente MCP stdio real.
+- Skill cargada por el agente, bucle de herramientas con Ollama local, FastAPI e interfaz de KPI/chat.
+- Ollama oficial instalado en .local-runtime (excluido de Git); modelo qwen3:4b-instruct en descarga. No hay API de pago.
 
-## Verificación pendiente
-- Primera publicación verificada: commit d592acc en origin/setup/colaboracion mediante GitHub Desktop (evatrigolahoz). La creación de pull request con el conector devuelve 403; para esta preparación inicial se integra mediante avance directo de main, sin sobrescribir commits remotos. Verificar main contra origin al continuar.
-- Conector GitHub del chat: 872587-ai, permiso de lectura. La usuaria confirma ser colaboradora; publicación con GitHub Desktop como evatrigolahoz comprobada.
-- Supabase: conexión real TLS verificada mediante Session pooler. Tabla public.ventas_superstore accesible: 9.800 filas. No se han modificado datos. La conexión directa fallaba en resolución DNS; se actualizó solo .env local conservando la contraseña.
-- Segundo ordenador: clonar repositorio, traer la rama integrada y configurar su propio .env; validar conexión desde ese equipo.
+## Validación en curso
+Servidor MCP, API, interfaz y agente en prueba. No dar por pasado el flujo completo hasta consultar las evidencias finales de 04_pruebas_y_reflexion. No requiere OPENAI_API_KEY. Faltan documentación final y pruebas del modelo descargado.
 
-- Entorno local .venv creado con Python 3.13; instalados psycopg2-binary 2.9.13 y python-dotenv 1.2.4. Ambas pruebas de conexión se ejecutaron correctamente con credenciales reales (salida 0).
-
-## Verificación de conexión completada
-Ver 04_pruebas_y_reflexion/supabase_2026-10-28.md. La preparación inicial está en main. Falta que el segundo ordenador configure su .env y ejecute la prueba.
-
-## Trabajo posterior
-Completar colaboración antes de desarrollar. Luego seguir PLAN_DE_TRABAJO.md. No usar el CSV local como prueba de datos reales ni afirmar beneficio/descuento inexistentes. Cada integrante redactará su reflexión real.
+## Equipo
+Los cambios locales de EJERCICIO 5 son visibles para Codex al leer archivos; no hay sincronización automática con el otro ordenador. Para el relevo, traer la rama de desarrollo y leer AGENTS.md. Configurar .env local sin publicar contraseñas. Ejecutar iniciar.command una vez preparado el entorno.

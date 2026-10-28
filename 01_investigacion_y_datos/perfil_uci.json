@@ -1,0 +1,16 @@
+{
+  "source": "https://archive.ics.uci.edu/static/public/352/online+retail.zip",
+  "source_sha256": "f5385cbb54bbebf7196389109c6b0621faab0c304e3702548165e71c84aede8b",
+  "csv_sha256": "2f6aa7354d718f8fe4235e6b2bf07d634d91a2c8f356fa9c100c9b465f58a26a",
+  "rows": 541909,
+  "raw_amount": "9747747.934",
+  "currency": "GBP",
+  "missing_customer": 135080,
+  "missing_description": 1454,
+  "nonpositive_price": 2517,
+  "negative_quantity": 10624,
+  "cancellation_lines": 9288,
+  "date_min": "2010-12-01T08:26:00",
+  "date_max": "2011-12-09T12:50:00",
+  "transformation": "Todas las filas originales; sin eliminar nulos ni duplicados. source_row conserva la fila del XLSX."
+}

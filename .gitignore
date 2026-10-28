@@ -5,3 +5,9 @@ __pycache__/
 *.py[cod]
 .venv/
 .DS_Store
+
+.local-runtime/
+.runtime/
+.pytest_cache/
+01_investigacion_y_datos/originales/
+01_investigacion_y_datos/datos_preparados.csv

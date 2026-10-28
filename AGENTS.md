@@ -20,4 +20,4 @@ Hackathon de BI con datos reales, PostgreSQL/Supabase, agente, Skill, MCP, backe
 - No declarar conexión, agente o prueba como funcional hasta ejecutarlos y conservar evidencia sin secretos.
 
 ## Alcance inmediato
-Prioridad del usuario: dejar colaboración GitHub y conexión Supabase preparadas antes de continuar el desarrollo del auditor. No instalar sincronización automática en segundo plano.
+El usuario autoriza construir el primer prototipo y subir cada bloque terminado a GitHub. Usar Ollama local, sin API de pago. No esperar al segundo ordenador. No instalar sincronización automática en segundo plano. La base principal del agente es ventas_uci (UCI Online Retail real); conservar ventas_superstore como tabla histórica.

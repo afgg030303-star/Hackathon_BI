@@ -1,7 +1,8 @@
-fastapi
-uvicorn
-psycopg2-binary
-python-dotenv
-mcp
-langchain
-langchain-openai
+fastapi==0.162.0
+uvicorn==0.54.0
+psycopg2-binary==2.9.13
+python-dotenv==1.2.4
+mcp==1.30.0
+httpx==0.28.1
+pydantic==2.14.1
+openpyxl==3.1.5
