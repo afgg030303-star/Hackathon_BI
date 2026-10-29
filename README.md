@@ -1,4 +1,4 @@
-# Observatorio Retail — agente BI
+# Auditor de ventas y cancelaciones | Observatorio Retail
 
 **Web pública:** https://observatorio-retail-bi.balmyspark1.chatgpt.site
 
@@ -13,7 +13,7 @@ Audita ventas y cancelaciones de un comercio real, consulta alertas y prepara ac
 - `agents/`, `skills/`, `config/`: agente, Skill y MCP.
 - `tests/`: evidencias reales y resultados.
 - `00_prompts_ia/`: resúmenes de sesiones y relevo sin secretos.
-- `REFLEXION.md`: propuesta basada en el relato del equipo, pendiente de revisión personal de Eva, Sacha y Andrés.
+- `REFLEXION.md`: índice hacia la única reflexión elegida, `Reflexion_Equipo_Auditor_Ventas.md`.
 
 ## Ejecutar localmente
 Python 3.13. Crear `.venv`, instalar `backend/requirements.txt`, copiar `.env.example` a `.env` si no existe. Configurar DATABASE_URL y GROQ_API_KEY. Ejecutar:
@@ -34,7 +34,7 @@ UCI Online Retail, 541.909 filas, diciembre 2010–diciembre 2011, GBP. Fuente y
 Groq tiene cuotas: un 429 requiere esperar; el panel SQL sigue funcionando. Las conclusiones del LLM necesitan revisión contra la evidencia: no son decisiones automáticas.
 
 ## Colaboración
-Rama de trabajo `desarrollo/agente-bi`; leer COLABORACION.md. Commit/push publica archivos, pull trae los del otro equipo. No hay sincronización automática ni exportación íntegra automática de chats.
+La entrega se consulta en `main`; las tareas se realizan en ramas y se integran mediante PR. Leer COLABORACION.md. Commit/push publica archivos, pull trae los del otro equipo. No hay sincronización automática ni exportación íntegra automática de chats.
 
 ## Auditoría y acciones
 Se revisan todos los grupos de país y producto. El centro de auditoría muestra hasta 12 señales y el recuento completo; las reglas son explícitas. Cada señal propone comprobación, responsable y validación. El borrador se descarga como texto y no se envía. La actualización automática funciona cada 60 segundos solo con la página visible.
@@ -49,3 +49,10 @@ El escenario de rentabilidad requiere un porcentaje de coste introducido por el 
 - `DEFENSA.md`: guion de demostración y preguntas para preparar.
 
 Auditoría de entrega actualizada: `tests/auditoria_29/` conserva el recorrido de borrador descargado, traza Skill/MCP, SQL, captura Supabase y comparación CSV por país/mes. `tests/pruebas.md` contiene las seis columnas para las nueve pruebas y casos de error.
+
+## Preparar la presentación
+- [Guía completa de defensa en PDF](output/pdf/Guia_defensa_auditor_ventas.pdf): guion, preguntas y respuestas, cifras de control, errores y límites.
+- [Mapa de entrega](ENTREGA.md): correspondencia entre cada requisito y sus archivos.
+- [Reflexión vigente](Reflexion_Equipo_Auditor_Ventas.md): Eva, Andrés y Sacha.
+
+Las carpetas obligatorias `investigacion`, `data`, `agents`, `skills`, `backend`, `frontend`, `config` y `tests` están presentes. `arquitectura` documenta el diseño; `web_publica` conserva el código cloud desplegado; `00_prompts_ia` permite el relevo y `output/pdf` contiene la defensa. Son complementos organizados a los requisitos, no aplicaciones adicionales. No se han movido módulos ejecutables para evitar romper sus rutas.
