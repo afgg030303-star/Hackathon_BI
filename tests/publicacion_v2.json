@@ -1,0 +1,277 @@
+{
+  "france": {
+    "status": 200,
+    "body": {
+      "summary": {
+        "pais": "France",
+        "desde": "2010-12-01",
+        "hasta": "2011-12-09",
+        "fuente": "UCI Online Retail",
+        "moneda": "GBP",
+        "limites": "Importe neto no es beneficio; no hay costes. Diciembre 2011 es parcial.",
+        "metricas": {
+          "lineas": 8557,
+          "importe_neto": 197403.9,
+          "cancelaciones": 12311.21,
+          "pedidos_venta": 392,
+          "lineas_fuera_kpi": 1,
+          "ventas_positivas": 209715.11,
+          "otros_ajustes_negativos": 0
+        }
+      },
+      "countries": {
+        "pais": "France",
+        "desde": "2010-12-01",
+        "filas": [
+          {
+            "grupo": "France",
+            "lineas": 8557,
+            "importe_neto": 197403.9,
+            "cancelaciones": 12311.21,
+            "pedidos_venta": 392,
+            "lineas_fuera_kpi": 1,
+            "ventas_positivas": 209715.11,
+            "otros_ajustes_negativos": 0
+          }
+        ],
+        "hasta": "2011-12-09",
+        "orden": "importe_neto descendente",
+        "fuente": "UCI Online Retail",
+        "moneda": "GBP",
+        "limites": "Importe neto no es beneficio; no hay costes. Diciembre 2011 es parcial.",
+        "dimension": "pais"
+      },
+      "months": {
+        "pais": "France",
+        "desde": "2010-12-01",
+        "filas": [
+          {
+            "grupo": "2011-11",
+            "lineas": 1580,
+            "importe_neto": 30697.51,
+            "cancelaciones": 1061.2,
+            "pedidos_venta": 64,
+            "lineas_fuera_kpi": 1,
+            "ventas_positivas": 31758.71,
+            "otros_ajustes_negativos": 0
+          },
+          {
+            "grupo": "2011-10",
+            "lineas": 898,
+            "importe_neto": 25032.04,
+            "cancelaciones": 8453.41,
+            "pedidos_venta": 35,
+            "lineas_fuera_kpi": 0,
+            "ventas_positivas": 33485.45,
+            "otros_ajustes_negativos": 0
+          },
+          {
+            "grupo": "2011-09",
+            "lineas": 1055,
+            "importe_neto": 23198.87,
+            "cancelaciones": 229.17,
+            "pedidos_venta": 45,
+            "lineas_fuera_kpi": 0,
+            "ventas_positivas": 23428.04,
+            "otros_ajustes_negativos": 0
+          },
+          {
+            "grupo": "2011-05",
+            "lineas": 728,
+            "importe_neto": 17527.08,
+            "cancelaciones": 87.8,
+            "pedidos_venta": 39,
+            "lineas_fuera_kpi": 0,
+            "ventas_positivas": 17614.88,
+            "otros_ajustes_negativos": 0
+          },
+          {
+            "grupo": "2011-01",
+            "lineas": 675,
+            "importe_neto": 17503.07,
+            "cancelaciones": 237.05,
+            "pedidos_venta": 29,
+            "lineas_fuera_kpi": 0,
+            "ventas_positivas": 17740.12,
+            "otros_ajustes_negativos": 0
+          },
+          {
+            "grupo": "2011-06",
+            "lineas": 610,
+            "importe_neto": 15991.87,
+            "cancelaciones": 356.54,
+            "pedidos_venta": 31,
+            "lineas_fuera_kpi": 0,
+            "ventas_positivas": 16348.41,
+            "otros_ajustes_negativos": 0
+          },
+          {
+            "grupo": "2011-03",
+            "lineas": 550,
+            "importe_neto": 14516.9,
+            "cancelaciones": 72.65,
+            "pedidos_venta": 25,
+            "lineas_fuera_kpi": 0,
+            "ventas_positivas": 14589.55,
+            "otros_ajustes_negativos": 0
+          },
+          {
+            "grupo": "2011-08",
+            "lineas": 571,
+            "importe_neto": 13789.26,
+            "cancelaciones": 21.7,
+            "pedidos_venta": 28,
+            "lineas_fuera_kpi": 0,
+            "ventas_positivas": 13810.96,
+            "otros_ajustes_negativos": 0
+          },
+          {
+            "grupo": "2011-07",
+            "lineas": 453,
+            "importe_neto": 9888.99,
+            "cancelaciones": 111.2,
+            "pedidos_venta": 22,
+            "lineas_fuera_kpi": 0,
+            "ventas_positivas": 10000.19,
+            "otros_ajustes_negativos": 0
+          },
+          {
+            "grupo": "2010-12",
+            "lineas": 439,
+            "importe_neto": 9575.36,
+            "cancelaciones": 40.95,
+            "pedidos_venta": 21,
+            "lineas_fuera_kpi": 0,
+            "ventas_positivas": 9616.31,
+            "otros_ajustes_negativos": 0
+          },
+          {
+            "grupo": "2011-02",
+            "lineas": 426,
+            "importe_neto": 8438.91,
+            "cancelaciones": 77.05,
+            "pedidos_venta": 21,
+            "lineas_fuera_kpi": 0,
+            "ventas_positivas": 8515.96,
+            "otros_ajustes_negativos": 0
+          },
+          {
+            "grupo": "2011-12",
+            "lineas": 339,
+            "importe_neto": 7048.83,
+            "cancelaciones": 228.09,
+            "pedidos_venta": 18,
+            "lineas_fuera_kpi": 0,
+            "ventas_positivas": 7276.92,
+            "otros_ajustes_negativos": 0
+          },
+          {
+            "grupo": "2011-04",
+            "lineas": 233,
+            "importe_neto": 4195.21,
+            "cancelaciones": 1334.4,
+            "pedidos_venta": 14,
+            "lineas_fuera_kpi": 0,
+            "ventas_positivas": 5529.61,
+            "otros_ajustes_negativos": 0
+          }
+        ],
+        "hasta": "2011-12-09",
+        "orden": "importe_neto descendente",
+        "fuente": "UCI Online Retail",
+        "moneda": "GBP",
+        "limites": "Importe neto no es beneficio; no hay costes. Diciembre 2011 es parcial.",
+        "dimension": "mes"
+      },
+      "transport": "MCP Streamable HTTP"
+    }
+  },
+  "empty": {
+    "status": 200,
+    "body": {
+      "summary": {
+        "pais": "NO_EXISTE",
+        "desde": "2010-12-01",
+        "hasta": "2011-12-09",
+        "fuente": "UCI Online Retail",
+        "moneda": "GBP",
+        "limites": "Importe neto no es beneficio; no hay costes. Diciembre 2011 es parcial.",
+        "metricas": {
+          "lineas": 0,
+          "importe_neto": 0,
+          "cancelaciones": 0,
+          "pedidos_venta": 0,
+          "lineas_fuera_kpi": 0,
+          "ventas_positivas": 0,
+          "otros_ajustes_negativos": 0
+        }
+      },
+      "countries": {
+        "pais": "NO_EXISTE",
+        "desde": "2010-12-01",
+        "filas": [],
+        "hasta": "2011-12-09",
+        "orden": "importe_neto descendente",
+        "fuente": "UCI Online Retail",
+        "moneda": "GBP",
+        "limites": "Importe neto no es beneficio; no hay costes. Diciembre 2011 es parcial.",
+        "dimension": "pais"
+      },
+      "months": {
+        "pais": "NO_EXISTE",
+        "desde": "2010-12-01",
+        "filas": [],
+        "hasta": "2011-12-09",
+        "orden": "importe_neto descendente",
+        "fuente": "UCI Online Retail",
+        "moneda": "GBP",
+        "limites": "Importe neto no es beneficio; no hay costes. Diciembre 2011 es parcial.",
+        "dimension": "mes"
+      },
+      "transport": "MCP Streamable HTTP"
+    }
+  },
+  "invalid": {
+    "status": 503,
+    "body": {
+      "detail": "No se pudo completar la consulta. Revisa los filtros o inténtalo de nuevo."
+    }
+  },
+  "chat": {
+    "status": 200,
+    "body": {
+      "answer": "**Hallazgo**  \nEl importe neto de las ventas en Francia durante todo el periodo disponible (01 dic 2010 – 09 dic 2011) es **£197 403,90**.\n\n**Cifras verificables**  \n- Ventas positivas: £209 715,11  \n- Cancelaciones: £12 311,21  \n- Otros ajustes negativos: £0,00  \n- Neto = £209 715,11 – £12 311,21 – £0,00 = **£197 403,90**  \n\n**Recomendación**  \nAnalizar las causas de las cancelaciones (12 311 GBP) para identificar posibles mejoras en el proceso de pedido o en la calidad del producto.  \n\n**Limitación**  \nNo se dispone de datos de costes, por lo que no se puede calcular margen ni beneficio.",
+      "evidence": [
+        {
+          "tool": "resumen_ventas",
+          "arguments": {
+            "desde": "2010-12-01",
+            "hasta": "2011-12-09",
+            "pais": "France"
+          },
+          "result": {
+            "pais": "France",
+            "desde": "2010-12-01",
+            "hasta": "2011-12-09",
+            "fuente": "UCI Online Retail",
+            "moneda": "GBP",
+            "limites": "Importe neto no es beneficio; no hay costes. Diciembre 2011 es parcial.",
+            "metricas": {
+              "lineas": 8557,
+              "importe_neto": 197403.9,
+              "cancelaciones": 12311.21,
+              "pedidos_venta": 392,
+              "lineas_fuera_kpi": 1,
+              "ventas_positivas": 209715.11,
+              "otros_ajustes_negativos": 0
+            }
+          },
+          "transport": "MCP Streamable HTTP"
+        }
+      ],
+      "model": "openai/gpt-oss-20b",
+      "duration_seconds": 1.159,
+      "mode": "agente_groq_cloud"
+    }
+  }
+}

@@ -1,59 +1,51 @@
-# Hackathon_BI — Auditor agéntico de BI
+# Observatorio Retail — agente BI
 
-Fase 1: estructura del proyecto y prueba de lectura en PostgreSQL (Supabase).
-El agente, el servidor MCP y el frontend se implementarán en fases posteriores.
+**Web pública:** https://observatorio-retail-bi.balmyspark1.chatgpt.site
 
-## Ejecución (macOS / Linux)
+Audita ventas y cancelaciones de un comercio real, consulta alertas y prepara acciones con un borrador de email. El agente usa Groq, una Skill y herramientas MCP para consultar PostgreSQL en Supabase. El panel muestra KPI verificables. No se calculan beneficios: no hay costes en el dataset.
 
-Desde la raíz del proyecto, con Python 3.11 o superior:
+## Entrega
+- `investigacion/`: problema, alternativas y fuentes.
+- `data/`: dataset UCI comprimido, perfil y migraciones SQL.
+- `arquitectura/`: flujo cloud y alternativa local.
+- `web_publica/`: código desplegado (backend TypeScript y frontend).
+- `backend/`, `frontend/`: alternativa local Python/FastAPI.
+- `agents/`, `skills/`, `config/`: agente, Skill y MCP.
+- `tests/`: evidencias reales y resultados.
+- `00_prompts_ia/`: resúmenes de sesiones y relevo sin secretos.
+- `REFLEXION.md`: propuesta basada en el relato del equipo, pendiente de revisión personal de Eva, Sacha y Andrés.
 
-```bash
-python3 -m venv .venv
-source .venv/bin/activate
-python -m pip install -r 02_backend_y_mcp/requirements.txt
+## Ejecutar localmente
+Python 3.13. Crear `.venv`, instalar `backend/requirements.txt`, copiar `.env.example` a `.env` si no existe. Configurar DATABASE_URL y GROQ_API_KEY. Ejecutar:
+
+```sh
+python -m uvicorn main:app --app-dir backend --host 127.0.0.1 --port 8000
 ```
 
-Configura `DATABASE_URL` en `.env` con la contraseña real de Supabase.
-Si la contraseña contiene caracteres reservados de una URL, debe codificarse
-como componente URL. No subas `.env` a GitHub. `OPENAI_API_KEY` no se utiliza
-en esta fase y puede conservar el placeholder.
+Sin GROQ_API_KEY se utiliza Ollama con qwen3:4b-instruct. No hace falta una API de OpenAI: el modelo openai/gpt-oss-20b se sirve a través de Groq.
 
-```bash
-python 02_backend_y_mcp/test_db.py
-```
+## Despliegue cloud
+`web_publica` usa Vinext/Cloudflare Workers en Sites. Secretos del servidor: GROQ_API_KEY, SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY. Aplicar las migraciones 001–003 una sola vez sobre la base compartida; ya están aplicadas en el proyecto actual. La web no depende del Mac. El endpoint MCP Streamable HTTP es `/api/mcp`. La clave publicable solo tiene acceso a agregados UCI mediante bi_tool; las filas están protegidas por RLS. Nunca subir `.env` ni la contraseña de PostgreSQL.
 
-El script carga `.env` desde la raíz independientemente del directorio de ejecución;
-las variables ya exportadas en el entorno tienen prioridad. Utiliza TLS, una sesión
-de solo lectura, un límite de conexión de 10 segundos y de consulta de 15 segundos.
-Ejecuta `SELECT COUNT(*) FROM ventas_superstore;` y muestra el total de filas.
-Finaliza con código 0 si la consulta funciona y con 1 ante errores.
-Una tabla vacía genera una advertencia, aunque la conexión funcione.
-La tabla debe existir previamente y ser accesible por el usuario configurado.
+Para compilar el código cloud: `cd web_publica && npm ci && npm run build`. El despliegue Sites se realiza con su flujo de publicación y el project_id guardado; un push a este GitHub por sí solo no despliega Sites.
 
-## Estructura
+## Datos y límites
+UCI Online Retail, 541.909 filas, diciembre 2010–diciembre 2011, GBP. Fuente y licencia en `data/FUENTES_Y_DECISION.md`. El dataset original y sus anomalías se conservan. Diciembre 2011 es parcial. `train.csv` es el archivo previo Superstore ficticio, no la fuente del agente.
+Groq tiene cuotas: un 429 requiere esperar; el panel SQL sigue funcionando. Las conclusiones del LLM necesitan revisión contra la evidencia: no son decisiones automáticas.
 
-- `00_prompts_ia`: instrucciones y prompts del proyecto.
-- `01_investigacion_y_datos`: investigación y documentación de datos.
-- `02_backend_y_mcp`: dependencias y prueba de conexión.
-- `03_frontend`: reservado para la interfaz.
-- `04_pruebas_y_reflexion`: reservado para evidencias y reflexión.
+## Colaboración
+Rama de trabajo `desarrollo/agente-bi`; leer COLABORACION.md. Commit/push publica archivos, pull trae los del otro equipo. No hay sincronización automática ni exportación íntegra automática de chats.
 
-## Estado de validación
+## Auditoría y acciones
+Se revisan todos los grupos de país y producto. El centro de auditoría muestra hasta 12 señales y el recuento completo; las reglas son explícitas. Cada señal propone comprobación, responsable y validación. El borrador se descarga como texto y no se envía. La actualización automática funciona cada 60 segundos solo con la página visible.
 
-La conexión real se verificó el 28/10/2026 con TLS mediante Session pooler.
-La tabla existente ventas_superstore tiene 9.800 filas. No se han modificado datos.
-El segundo ordenador debe configurar su propio .env y verificar la conexión.
-Las dependencias se dejan sin fijar según la lista solicitada; convendrá registrar
-las versiones del entorno una vez validado para reproducir la entrega.
+El escenario de rentabilidad requiere un porcentaje de coste introducido por el usuario. Es una simulación identificada, no beneficio real. No inferimos descuentos ni causas que no estén en los datos.
 
-## Trabajo en equipo
+## Pruebas y defensa
+- `python tests/validar_publico.py`: CSV independiente, API, MCP y 2 preguntas a Groq (consume cuota). BI_TEST_URL permite otro despliegue.
+- `node --test tests/unit/audit.test.mjs`: reglas de presentación, borradores y escenarios.
+- `tests/pruebas.md`: matriz con resultados reales, errores y evidencias.
+- `ENTREGA.md`: cobertura de todos los requisitos y pendientes humanos.
+- `DEFENSA.md`: guion de demostración y preguntas para preparar.
 
-Leer [COLABORACION.md](COLABORACION.md) y [ESTADO_PROYECTO.md](ESTADO_PROYECTO.md). Las instrucciones de Codex están en [AGENTS.md](AGENTS.md). Repositorio compartido: https://github.com/afgg030303-star/Hackathon_BI .
-
-Antes de probar la tabla, puede verificarse la conexión sin depender del dataset:
-
-```bash
-python 02_backend_y_mcp/comprobar_supabase.py
-```
-
-El alcance de rentabilidad del planteamiento inicial está pendiente de corregir: el CSV local no contiene beneficio ni descuento y Superstore es ficticio. Ver [PLAN_DE_TRABAJO.md](PLAN_DE_TRABAJO.md).
+Auditoría de entrega actualizada: `tests/auditoria_29/` conserva el recorrido de borrador descargado, traza Skill/MCP, SQL, captura Supabase y comparación CSV por país/mes. `tests/pruebas.md` contiene las seis columnas para las nueve pruebas y casos de error.

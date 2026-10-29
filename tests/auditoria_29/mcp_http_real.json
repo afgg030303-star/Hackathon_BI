@@ -1,0 +1,298 @@
+[
+  {
+    "url": "https://observatorio-retail-bi.balmyspark1.chatgpt.site/api/mcp",
+    "request": {
+      "jsonrpc": "2.0",
+      "id": 1,
+      "method": "initialize",
+      "params": {
+        "protocolVersion": "2025-03-26",
+        "capabilities": {},
+        "clientInfo": {
+          "name": "auditoria-evidencias",
+          "version": "1"
+        }
+      }
+    },
+    "status": 200,
+    "response": {
+      "jsonrpc": "2.0",
+      "id": 1,
+      "result": {
+        "protocolVersion": "2025-03-26",
+        "capabilities": {
+          "tools": {}
+        },
+        "serverInfo": {
+          "name": "Auditor BI UCI",
+          "version": "1.0.0"
+        }
+      }
+    }
+  },
+  {
+    "url": "https://observatorio-retail-bi.balmyspark1.chatgpt.site/api/mcp",
+    "request": {
+      "jsonrpc": "2.0",
+      "id": 2,
+      "method": "tools/list",
+      "params": {}
+    },
+    "status": 200,
+    "response": {
+      "jsonrpc": "2.0",
+      "id": 2,
+      "result": {
+        "tools": [
+          {
+            "name": "resumen_ventas",
+            "description": "Ventas positivas, cancelaciones e importe neto GBP. No beneficio.",
+            "inputSchema": {
+              "type": "object",
+              "properties": {
+                "desde": {
+                  "type": "string",
+                  "description": "Fecha ISO YYYY-MM-DD, por defecto 2010-12-01"
+                },
+                "hasta": {
+                  "type": "string",
+                  "description": "Fecha ISO inclusiva, por defecto 2011-12-09"
+                },
+                "pais": {
+                  "type": [
+                    "string",
+                    "null"
+                  ],
+                  "description": "Nombre exacto en inglés, por ejemplo France; null para todos"
+                }
+              },
+              "additionalProperties": false
+            }
+          },
+          {
+            "name": "comparar_grupos",
+            "description": "Ranking por importe neto descendente. País, producto o mes.",
+            "inputSchema": {
+              "type": "object",
+              "properties": {
+                "desde": {
+                  "type": "string",
+                  "description": "Fecha ISO YYYY-MM-DD, por defecto 2010-12-01"
+                },
+                "hasta": {
+                  "type": "string",
+                  "description": "Fecha ISO inclusiva, por defecto 2011-12-09"
+                },
+                "pais": {
+                  "type": [
+                    "string",
+                    "null"
+                  ],
+                  "description": "Nombre exacto en inglés, por ejemplo France; null para todos"
+                },
+                "dimension": {
+                  "type": "string",
+                  "enum": [
+                    "pais",
+                    "producto",
+                    "mes"
+                  ]
+                },
+                "limite": {
+                  "type": "integer",
+                  "minimum": 1,
+                  "maximum": 20
+                }
+              },
+              "additionalProperties": false
+            }
+          },
+          {
+            "name": "auditar_anomalias",
+            "description": "Audita TODOS los grupos de países y productos; detecta netos negativos y cancelaciones elevadas con reglas explícitas. Devuelve acciones e hipótesis, no causas probadas.",
+            "inputSchema": {
+              "type": "object",
+              "properties": {
+                "desde": {
+                  "type": "string",
+                  "description": "Fecha ISO YYYY-MM-DD, por defecto 2010-12-01"
+                },
+                "hasta": {
+                  "type": "string",
+                  "description": "Fecha ISO inclusiva, por defecto 2011-12-09"
+                },
+                "pais": {
+                  "type": [
+                    "string",
+                    "null"
+                  ],
+                  "description": "Nombre exacto en inglés, por ejemplo France; null para todos"
+                }
+              },
+              "additionalProperties": false
+            }
+          },
+          {
+            "name": "redactar_borrador",
+            "description": "Audita los datos y redacta un borrador de email con acciones verificables. No envía correos.",
+            "inputSchema": {
+              "type": "object",
+              "properties": {
+                "desde": {
+                  "type": "string",
+                  "description": "Fecha ISO YYYY-MM-DD, por defecto 2010-12-01"
+                },
+                "hasta": {
+                  "type": "string",
+                  "description": "Fecha ISO inclusiva, por defecto 2011-12-09"
+                },
+                "pais": {
+                  "type": [
+                    "string",
+                    "null"
+                  ],
+                  "description": "Nombre exacto en inglés, por ejemplo France; null para todos"
+                }
+              },
+              "additionalProperties": false
+            }
+          },
+          {
+            "name": "estimar_escenario",
+            "description": "Simulación de resultado con coste supuesto explícito por el usuario. No es beneficio real. Solicitar porcentaje al usuario antes de usar.",
+            "inputSchema": {
+              "type": "object",
+              "properties": {
+                "desde": {
+                  "type": "string",
+                  "description": "Fecha ISO YYYY-MM-DD, por defecto 2010-12-01"
+                },
+                "hasta": {
+                  "type": "string",
+                  "description": "Fecha ISO inclusiva, por defecto 2011-12-09"
+                },
+                "pais": {
+                  "type": [
+                    "string",
+                    "null"
+                  ],
+                  "description": "Nombre exacto en inglés, por ejemplo France; null para todos"
+                },
+                "coste_porcentaje": {
+                  "type": "number",
+                  "minimum": 0,
+                  "maximum": 200
+                }
+              },
+              "required": [
+                "coste_porcentaje"
+              ],
+              "additionalProperties": false
+            }
+          },
+          {
+            "name": "comprobar_calidad",
+            "description": "Recuento y calidad del dataset real completo.",
+            "inputSchema": {
+              "type": "object",
+              "properties": {},
+              "additionalProperties": false
+            }
+          }
+        ]
+      }
+    }
+  },
+  {
+    "url": "https://observatorio-retail-bi.balmyspark1.chatgpt.site/api/mcp",
+    "request": {
+      "jsonrpc": "2.0",
+      "id": 3,
+      "method": "tools/call",
+      "params": {
+        "name": "redactar_borrador",
+        "arguments": {
+          "pais": "France"
+        }
+      }
+    },
+    "status": 200,
+    "response": {
+      "jsonrpc": "2.0",
+      "id": 3,
+      "result": {
+        "content": [
+          {
+            "type": "text",
+            "text": "{\"estado\":\"borrador_no_enviado\",\"destinatario\":\"Responsable comercial y administración (revisar destinatario)\",\"asunto\":\"Revisión de ventas y cancelaciones · 2010-12-01 a 2011-12-09\",\"cuerpo\":\"Hola equipo:\\n\\nLa auditoría de UCI Online Retail del 2010-12-01 al 2011-12-09 para France ha identificado 1 señales con umbrales heurísticos.\\n\\nproducto: M; cancelaciones 9502.86 GBP; neto -10.49 GBP.\\nAcción propuesta: Conciliar abonos y ventas del periodo; clasificar el código como mercancía o ajuste contable antes de modificar precios.\\n\\nSolicitamos conciliar las facturas y documentar los motivos antes de decidir cambios comerciales. No hay evidencia de costes, descuentos o causas; estos importes no son beneficios. Los grupos pueden solaparse y no deben sumarse.\\n\\nPropuesta: revisar en la próxima reunión comercial y repetir el análisis tras validar las incidencias.\\n\\nBorrador para revisión humana; no se ha enviado ningún correo.\",\"auditoria\":{\"pais\":\"France\",\"desde\":\"2010-12-01\",\"hasta\":\"2011-12-09\",\"fuente\":\"UCI Online Retail\",\"moneda\":\"GBP\",\"reglas\":\"Neto negativo y cancelaciones >=100 GBP; o cancelaciones/ventas >=20% con ventas >=1000 GBP. Umbrales heurísticos, no estadísticos.\",\"alertas\":[{\"grupo\":\"M\",\"regla\":\"neto_negativo\",\"lineas\":10,\"dimension\":\"producto\",\"importe_neto\":-10.49,\"cancelaciones\":9502.86,\"tasa_cancelacion\":100.11,\"ventas_positivas\":9492.37,\"dato_critico\":\"producto: M; cancelaciones 9502.86 GBP; neto -10.49 GBP.\",\"hipotesis\":\"La causa no está demostrada. Puede haber anulaciones, correcciones o asientos contables; contrastar facturas originales.\",\"accion\":\"Conciliar abonos y ventas del periodo; clasificar el código como mercancía o ajuste contable antes de modificar precios.\",\"responsable\":\"Responsable comercial y administración\",\"validacion\":\"Documentar el motivo de cada incidencia, repetir la auditoría y comparar periodos completos equivalentes.\"}],\"limites\":\"Grupos país y producto pueden solaparse; no sumar sus importes. No demuestra pérdidas ni causas. Sin costes, descuentos o logística. Hasta 12 alertas ordenadas por importe cancelado.\",\"consultado_en\":\"2026-10-29T07:55:39.89276+00:00\",\"alertas_activas\":1,\"grupos_analizados\":1544,\"lineas_analizadas\":8557}}"
+          }
+        ],
+        "structuredContent": {
+          "estado": "borrador_no_enviado",
+          "destinatario": "Responsable comercial y administración (revisar destinatario)",
+          "asunto": "Revisión de ventas y cancelaciones · 2010-12-01 a 2011-12-09",
+          "cuerpo": "Hola equipo:\n\nLa auditoría de UCI Online Retail del 2010-12-01 al 2011-12-09 para France ha identificado 1 señales con umbrales heurísticos.\n\nproducto: M; cancelaciones 9502.86 GBP; neto -10.49 GBP.\nAcción propuesta: Conciliar abonos y ventas del periodo; clasificar el código como mercancía o ajuste contable antes de modificar precios.\n\nSolicitamos conciliar las facturas y documentar los motivos antes de decidir cambios comerciales. No hay evidencia de costes, descuentos o causas; estos importes no son beneficios. Los grupos pueden solaparse y no deben sumarse.\n\nPropuesta: revisar en la próxima reunión comercial y repetir el análisis tras validar las incidencias.\n\nBorrador para revisión humana; no se ha enviado ningún correo.",
+          "auditoria": {
+            "pais": "France",
+            "desde": "2010-12-01",
+            "hasta": "2011-12-09",
+            "fuente": "UCI Online Retail",
+            "moneda": "GBP",
+            "reglas": "Neto negativo y cancelaciones >=100 GBP; o cancelaciones/ventas >=20% con ventas >=1000 GBP. Umbrales heurísticos, no estadísticos.",
+            "alertas": [
+              {
+                "grupo": "M",
+                "regla": "neto_negativo",
+                "lineas": 10,
+                "dimension": "producto",
+                "importe_neto": -10.49,
+                "cancelaciones": 9502.86,
+                "tasa_cancelacion": 100.11,
+                "ventas_positivas": 9492.37,
+                "dato_critico": "producto: M; cancelaciones 9502.86 GBP; neto -10.49 GBP.",
+                "hipotesis": "La causa no está demostrada. Puede haber anulaciones, correcciones o asientos contables; contrastar facturas originales.",
+                "accion": "Conciliar abonos y ventas del periodo; clasificar el código como mercancía o ajuste contable antes de modificar precios.",
+                "responsable": "Responsable comercial y administración",
+                "validacion": "Documentar el motivo de cada incidencia, repetir la auditoría y comparar periodos completos equivalentes."
+              }
+            ],
+            "limites": "Grupos país y producto pueden solaparse; no sumar sus importes. No demuestra pérdidas ni causas. Sin costes, descuentos o logística. Hasta 12 alertas ordenadas por importe cancelado.",
+            "consultado_en": "2026-10-29T07:55:39.89276+00:00",
+            "alertas_activas": 1,
+            "grupos_analizados": 1544,
+            "lineas_analizadas": 8557
+          }
+        },
+        "isError": false
+      }
+    }
+  },
+  {
+    "url": "https://observatorio-retail-bi.balmyspark1.chatgpt.site/api/mcp",
+    "request": {
+      "jsonrpc": "2.0",
+      "id": 4,
+      "method": "tools/call",
+      "params": {
+        "name": "resumen_ventas",
+        "arguments": {
+          "sql": "UPDATE ventas_uci SET quantity=0"
+        }
+      }
+    },
+    "status": 200,
+    "response": {
+      "jsonrpc": "2.0",
+      "id": 4,
+      "result": {
+        "content": [
+          {
+            "type": "text",
+            "text": "Consulta inválida o base de datos no disponible"
+          }
+        ],
+        "isError": true
+      }
+    }
+  }
+]

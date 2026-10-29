@@ -1,0 +1,58 @@
+{
+  "skill": {
+    "name": "auditar-ventas",
+    "source": "skills/auditar_ventas/SKILL.md",
+    "sha256": "6484d2067d18e8434e893f942caf145a7fd15d075948179806061c550ca44b71",
+    "loaded_as": "system_instructions",
+    "executed_procedures": [
+      "redactar_borrador"
+    ]
+  },
+  "consultas": [
+    {
+      "tool": "redactar_borrador",
+      "arguments": {
+        "desde": "2010-12-01",
+        "hasta": "2011-12-09",
+        "pais": "France"
+      },
+      "result": {
+        "estado": "borrador_no_enviado",
+        "destinatario": "Responsable comercial y administración (revisar destinatario)",
+        "asunto": "Revisión de ventas y cancelaciones · 2010-12-01 a 2011-12-09",
+        "cuerpo": "Hola equipo:\n\nLa auditoría de UCI Online Retail del 2010-12-01 al 2011-12-09 para France ha identificado 1 señales con umbrales heurísticos.\n\nproducto: M; cancelaciones 9502.86 GBP; neto -10.49 GBP.\nAcción propuesta: Conciliar abonos y ventas del periodo; clasificar el código como mercancía o ajuste contable antes de modificar precios.\n\nSolicitamos conciliar las facturas y documentar los motivos antes de decidir cambios comerciales. No hay evidencia de costes, descuentos o causas; estos importes no son beneficios. Los grupos pueden solaparse y no deben sumarse.\n\nPropuesta: revisar en la próxima reunión comercial y repetir el análisis tras validar las incidencias.\n\nBorrador para revisión humana; no se ha enviado ningún correo.",
+        "auditoria": {
+          "pais": "France",
+          "desde": "2010-12-01",
+          "hasta": "2011-12-09",
+          "fuente": "UCI Online Retail",
+          "moneda": "GBP",
+          "reglas": "Neto negativo y cancelaciones >=100 GBP; o cancelaciones/ventas >=20% con ventas >=1000 GBP. Umbrales heurísticos, no estadísticos.",
+          "alertas": [
+            {
+              "grupo": "M",
+              "regla": "neto_negativo",
+              "lineas": 10,
+              "dimension": "producto",
+              "importe_neto": -10.49,
+              "cancelaciones": 9502.86,
+              "tasa_cancelacion": 100.11,
+              "ventas_positivas": 9492.37,
+              "dato_critico": "producto: M; cancelaciones 9502.86 GBP; neto -10.49 GBP.",
+              "hipotesis": "La causa no está demostrada. Puede haber anulaciones, correcciones o asientos contables; contrastar facturas originales.",
+              "accion": "Conciliar abonos y ventas del periodo; clasificar el código como mercancía o ajuste contable antes de modificar precios.",
+              "responsable": "Responsable comercial y administración",
+              "validacion": "Documentar el motivo de cada incidencia, repetir la auditoría y comparar periodos completos equivalentes."
+            }
+          ],
+          "limites": "Grupos país y producto pueden solaparse; no sumar sus importes. No demuestra pérdidas ni causas. Sin costes, descuentos o logística. Hasta 12 alertas ordenadas por importe cancelado.",
+          "consultado_en": "2026-10-29T07:56:48.059113+00:00",
+          "alertas_activas": 1,
+          "grupos_analizados": 1544,
+          "lineas_analizadas": 8557
+        }
+      },
+      "transport": "MCP Streamable HTTP"
+    }
+  ]
+}

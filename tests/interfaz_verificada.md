@@ -1,0 +1,4 @@
+# Verificación de interfaz en navegador
+Se recargó la URL pública tras el despliegue. Se seleccionó France y se pulsó Actualizar informe. Se observaron 8557 líneas, 209715.11 ventas,12311.21 cancelaciones y197403.90 neto; auditoría:1544 grupos,1 alerta, códigoM con neto-10.49.
+Se abrió el escenario, se introdujo70 y se pulsó Calcular: coste146800.58 y resultado50603.32 GBP con etiqueta SIMULACIÓN. Se abrió el borrador: el texto incluía periodo, France,1 señal y acción de conciliación; indicaba no enviado. Se guardó auditoria_web.png.
+Se envió una pregunta desde el chat y se observó el estado de consulta; la lectura final de esa respuesta quedó bloqueada por la herramienta de navegador tras la reanudación. El flujo de respuesta se comprobó por API en agente_auditor_final.json. El botón de descarga no se ha verificado como descarga física en esta sesión.

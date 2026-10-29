@@ -15,9 +15,9 @@ Hackathon de BI con datos reales, PostgreSQL/Supabase, agente, Skill, MCP, backe
 ## Base de datos y secretos
 - DATABASE_URL y OPENAI_API_KEY solo en .env local o variables de entorno; nunca en Git, frontend, chats, capturas ni logs.
 - Usar .env.example como plantilla. No sobrescribir un .env existente.
-- Consultas analíticas de lectura. Guardar cambios de esquema en 01_investigacion_y_datos/migrations y coordinar una única ejecución; no importar dos veces el dataset.
+- Consultas analíticas de lectura. Guardar cambios de esquema en data/migrations y coordinar una única ejecución; no importar dos veces el dataset.
 - Inspeccionar tablas antes de migrar y no borrar ni reemplazar datos existentes sin autorización específica.
 - No declarar conexión, agente o prueba como funcional hasta ejecutarlos y conservar evidencia sin secretos.
 
 ## Alcance inmediato
-Prioridad del usuario: dejar colaboración GitHub y conexión Supabase preparadas antes de continuar el desarrollo del auditor. No instalar sincronización automática en segundo plano.
+El usuario autoriza desarrollar el auditor y sus mejoras y subir cada bloque terminado a GitHub. Usar Groq con la clave local autorizada; Ollama queda como alternativa sin clave. La web pública usa secretos de Sites y Supabase por HTTP. No esperar al segundo ordenador. No instalar sincronización automática en segundo plano. La base principal del agente es ventas_uci (UCI Online Retail real); conservar ventas_superstore como tabla histórica.

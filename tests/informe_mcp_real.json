@@ -1,0 +1,259 @@
+{
+  "summary": {
+    "fuente": "UCI Online Retail",
+    "moneda": "GBP",
+    "desde": "2010-12-01",
+    "hasta": "2011-12-09",
+    "pais": null,
+    "limites": "Importe neto no es beneficio; no hay costes. Cancelación no prueba devolución física. Diciembre 2011 es parcial.",
+    "metricas": {
+      "lineas": 541909,
+      "pedidos_venta": 19960,
+      "ventas_positivas": "10666684.544",
+      "cancelaciones": "896812.49",
+      "otros_ajustes_negativos": "0",
+      "importe_neto": "9769872.054",
+      "lineas_fuera_kpi": 2517
+    }
+  },
+  "countries": {
+    "fuente": "UCI Online Retail",
+    "moneda": "GBP",
+    "desde": "2010-12-01",
+    "hasta": "2011-12-09",
+    "pais": null,
+    "limites": "Importe neto no es beneficio; no hay costes. Cancelación no prueba devolución física. Diciembre 2011 es parcial.",
+    "dimension": "pais",
+    "orden": "importe_neto descendente",
+    "filas": [
+      {
+        "grupo": "United Kingdom",
+        "lineas": 495478,
+        "pedidos_venta": 18019,
+        "ventas_positivas": "9025222.084",
+        "cancelaciones": "815291.60",
+        "otros_ajustes_negativos": "0",
+        "importe_neto": "8209930.484",
+        "lineas_fuera_kpi": 2499
+      },
+      {
+        "grupo": "Netherlands",
+        "lineas": 2371,
+        "pedidos_venta": 94,
+        "ventas_positivas": "285446.34",
+        "cancelaciones": "784.80",
+        "otros_ajustes_negativos": "0",
+        "importe_neto": "284661.54",
+        "lineas_fuera_kpi": 4
+      },
+      {
+        "grupo": "EIRE",
+        "lineas": 8196,
+        "pedidos_venta": 288,
+        "ventas_positivas": "283453.96",
+        "cancelaciones": "20177.14",
+        "otros_ajustes_negativos": "0",
+        "importe_neto": "263276.82",
+        "lineas_fuera_kpi": 4
+      },
+      {
+        "grupo": "Germany",
+        "lineas": 9495,
+        "pedidos_venta": 457,
+        "ventas_positivas": "228867.14",
+        "cancelaciones": "7168.93",
+        "otros_ajustes_negativos": "0",
+        "importe_neto": "221698.21",
+        "lineas_fuera_kpi": 2
+      },
+      {
+        "grupo": "France",
+        "lineas": 8557,
+        "pedidos_venta": 392,
+        "ventas_positivas": "209715.11",
+        "cancelaciones": "12311.21",
+        "otros_ajustes_negativos": "0",
+        "importe_neto": "197403.90",
+        "lineas_fuera_kpi": 1
+      },
+      {
+        "grupo": "Australia",
+        "lineas": 1259,
+        "pedidos_venta": 57,
+        "ventas_positivas": "138521.31",
+        "cancelaciones": "1444.04",
+        "otros_ajustes_negativos": "0",
+        "importe_neto": "137077.27",
+        "lineas_fuera_kpi": 3
+      },
+      {
+        "grupo": "Switzerland",
+        "lineas": 2002,
+        "pedidos_venta": 54,
+        "ventas_positivas": "57089.90",
+        "cancelaciones": "704.55",
+        "otros_ajustes_negativos": "0",
+        "importe_neto": "56385.35",
+        "lineas_fuera_kpi": 1
+      },
+      {
+        "grupo": "Spain",
+        "lineas": 2533,
+        "pedidos_venta": 90,
+        "ventas_positivas": "61577.11",
+        "cancelaciones": "6802.53",
+        "otros_ajustes_negativos": "0",
+        "importe_neto": "54774.58",
+        "lineas_fuera_kpi": 1
+      }
+    ]
+  },
+  "months": {
+    "fuente": "UCI Online Retail",
+    "moneda": "GBP",
+    "desde": "2010-12-01",
+    "hasta": "2011-12-09",
+    "pais": null,
+    "limites": "Importe neto no es beneficio; no hay costes. Cancelación no prueba devolución física. Diciembre 2011 es parcial.",
+    "dimension": "mes",
+    "orden": "importe_neto descendente",
+    "filas": [
+      {
+        "grupo": "2011-11",
+        "lineas": 84711,
+        "pedidos_venta": 2769,
+        "ventas_positivas": "1509496.33",
+        "cancelaciones": "47740.08",
+        "otros_ajustes_negativos": "0",
+        "importe_neto": "1461756.25",
+        "lineas_fuera_kpi": 266
+      },
+      {
+        "grupo": "2011-10",
+        "lineas": 60742,
+        "pedidos_venta": 2040,
+        "ventas_positivas": "1154979.30",
+        "cancelaciones": "84274.63",
+        "otros_ajustes_negativos": "0",
+        "importe_neto": "1070704.67",
+        "lineas_fuera_kpi": 238
+      },
+      {
+        "grupo": "2011-09",
+        "lineas": 50226,
+        "pedidos_venta": 1837,
+        "ventas_positivas": "1058590.172",
+        "cancelaciones": "38902.55",
+        "otros_ajustes_negativos": "0",
+        "importe_neto": "1019687.622",
+        "lineas_fuera_kpi": 160
+      },
+      {
+        "grupo": "2010-12",
+        "lineas": 42481,
+        "pedidos_venta": 1559,
+        "ventas_positivas": "823746.14",
+        "cancelaciones": "74789.12",
+        "otros_ajustes_negativos": "0",
+        "importe_neto": "748957.02",
+        "lineas_fuera_kpi": 273
+      },
+      {
+        "grupo": "2011-05",
+        "lineas": 37030,
+        "pedidos_venta": 1681,
+        "ventas_positivas": "770536.02",
+        "cancelaciones": "47202.51",
+        "otros_ajustes_negativos": "0",
+        "importe_neto": "723333.51",
+        "lineas_fuera_kpi": 245
+      },
+      {
+        "grupo": "2011-08",
+        "lineas": 35284,
+        "pedidos_venta": 1361,
+        "ventas_positivas": "759138.38",
+        "cancelaciones": "54333.75",
+        "otros_ajustes_negativos": "0",
+        "importe_neto": "704804.63",
+        "lineas_fuera_kpi": 133
+      },
+      {
+        "grupo": "2011-06",
+        "lineas": 36874,
+        "pedidos_venta": 1533,
+        "ventas_positivas": "761739.90",
+        "cancelaciones": "70616.78",
+        "otros_ajustes_negativos": "0",
+        "importe_neto": "691123.12",
+        "lineas_fuera_kpi": 186
+      },
+      {
+        "grupo": "2011-03",
+        "lineas": 36748,
+        "pedidos_venta": 1454,
+        "ventas_positivas": "717639.36",
+        "cancelaciones": "34372.28",
+        "otros_ajustes_negativos": "0",
+        "importe_neto": "683267.08",
+        "lineas_fuera_kpi": 246
+      },
+      {
+        "grupo": "2011-07",
+        "lineas": 39518,
+        "pedidos_venta": 1475,
+        "ventas_positivas": "719221.191",
+        "cancelaciones": "37921.08",
+        "otros_ajustes_negativos": "0",
+        "importe_neto": "681300.111",
+        "lineas_fuera_kpi": 188
+      },
+      {
+        "grupo": "2011-01",
+        "lineas": 35147,
+        "pedidos_venta": 1086,
+        "ventas_positivas": "691364.56",
+        "cancelaciones": "131364.30",
+        "otros_ajustes_negativos": "0",
+        "importe_neto": "560000.26",
+        "lineas_fuera_kpi": 140
+      },
+      {
+        "grupo": "2011-02",
+        "lineas": 27707,
+        "pedidos_venta": 1100,
+        "ventas_positivas": "523631.89",
+        "cancelaciones": "25569.24",
+        "otros_ajustes_negativos": "0",
+        "importe_neto": "498062.65",
+        "lineas_fuera_kpi": 127
+      },
+      {
+        "grupo": "2011-04",
+        "lineas": 29916,
+        "pedidos_venta": 1246,
+        "ventas_positivas": "537808.621",
+        "cancelaciones": "44601.50",
+        "otros_ajustes_negativos": "0",
+        "importe_neto": "493207.121",
+        "lineas_fuera_kpi": 261
+      },
+      {
+        "grupo": "2011-12",
+        "lineas": 25525,
+        "pedidos_venta": 819,
+        "ventas_positivas": "638792.68",
+        "cancelaciones": "205124.67",
+        "otros_ajustes_negativos": "0",
+        "importe_neto": "433668.01",
+        "lineas_fuera_kpi": 54
+      }
+    ]
+  },
+  "mode": "informe_sql_via_mcp",
+  "tools": [
+    "resumen_ventas",
+    "comparar_grupos"
+  ],
+  "transport": "MCP stdio"
+}

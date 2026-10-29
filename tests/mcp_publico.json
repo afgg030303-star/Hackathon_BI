@@ -1,0 +1,29 @@
+{
+  "meta": null,
+  "content": [
+    {
+      "type": "text",
+      "text": "{\"pais\":\"France\",\"desde\":\"2010-12-01\",\"hasta\":\"2011-12-09\",\"fuente\":\"UCI Online Retail\",\"moneda\":\"GBP\",\"limites\":\"Importe neto no es beneficio; no hay costes. Diciembre 2011 es parcial.\",\"metricas\":{\"lineas\":8557,\"importe_neto\":197403.9,\"cancelaciones\":12311.21,\"pedidos_venta\":392,\"lineas_fuera_kpi\":1,\"ventas_positivas\":209715.11,\"otros_ajustes_negativos\":0}}",
+      "annotations": null,
+      "meta": null
+    }
+  ],
+  "structuredContent": {
+    "pais": "France",
+    "desde": "2010-12-01",
+    "hasta": "2011-12-09",
+    "fuente": "UCI Online Retail",
+    "moneda": "GBP",
+    "limites": "Importe neto no es beneficio; no hay costes. Diciembre 2011 es parcial.",
+    "metricas": {
+      "lineas": 8557,
+      "importe_neto": 197403.9,
+      "cancelaciones": 12311.21,
+      "pedidos_venta": 392,
+      "lineas_fuera_kpi": 1,
+      "ventas_positivas": 209715.11,
+      "otros_ajustes_negativos": 0
+    }
+  },
+  "isError": false
+}

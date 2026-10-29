@@ -1,22 +1,9 @@
-# Estado para continuar — 28/10/2026
+# Estado de entrega — 29/10/2026
+Web pública: https://observatorio-retail-bi.balmyspark1.chatgpt.site
+Rama: desarrollo/agente-bi. Datos reales UCI:541909 filas en Supabase. Cloud Groq → MCP HTTP → funciones SQL; alternativa Python con MCP stdio. Seis herramientas y Skill real.
+Implementado: KPI, filtros corregidos, auditoría de todos los grupos,40 señales globales, hipótesis y acciones, borrador no enviado, escenario de coste explícito. Refresco60s con página visible. Sin vigilancia cerrada ni ingesta externa.
+Versión Sites5, fuente 425dcf09a79916ba6ec7e456c296ba07fd178053. web_publica conserva fuente reproducible sin secretos.
+Pruebas: tests/pruebas.md; conservar fallos iniciales y repeticiones. Reflexión: propuesta basada en relato de Eva sobre Sacha, Andrés y Eva; deben revisar sus apartados y consensuar reflexión común. No afirmar revisión humana realizada.
+Contexto: enlace ChatGPT leído completo; revisaba un commit antiguo y otra rama local sin publicar. No se importó ese código ni se atribuyeron sus pruebas. GitHub guarda archivos, Supabase datos y Sites ejecuta web; push/pull no son automáticos.
 
-## Destinos acordados
-- GitHub: https://github.com/afgg030303-star/Hackathon_BI
-- Supabase: gvsxekaqeodljocyqkfo (Hackathon-BI).
-
-## Preparado
-Git inicializado conservando el historial remoto; instrucciones AGENTS.md, guía COLABORACION.md, plantilla .env.example, registro de sesión y prueba de conexión sin dependencia de tablas. La carpeta .env está excluida de Git. El agente BI, MCP y frontend todavía no están implementados.
-
-## Verificación pendiente
-- Primera publicación verificada: commit d592acc en origin/setup/colaboracion mediante GitHub Desktop (evatrigolahoz). La creación de pull request con el conector devuelve 403; para esta preparación inicial se integra mediante avance directo de main, sin sobrescribir commits remotos. Verificar main contra origin al continuar.
-- Conector GitHub del chat: 872587-ai, permiso de lectura. La usuaria confirma ser colaboradora; publicación con GitHub Desktop como evatrigolahoz comprobada.
-- Supabase: conexión real TLS verificada mediante Session pooler. Tabla public.ventas_superstore accesible: 9.800 filas. No se han modificado datos. La conexión directa fallaba en resolución DNS; se actualizó solo .env local conservando la contraseña.
-- Segundo ordenador: clonar repositorio, traer la rama integrada y configurar su propio .env; validar conexión desde ese equipo.
-
-- Entorno local .venv creado con Python 3.13; instalados psycopg2-binary 2.9.13 y python-dotenv 1.2.4. Ambas pruebas de conexión se ejecutaron correctamente con credenciales reales (salida 0).
-
-## Verificación de conexión completada
-Ver 04_pruebas_y_reflexion/supabase_2026-10-28.md. La preparación inicial está en main. Falta que el segundo ordenador configure su .env y ejecute la prueba.
-
-## Trabajo posterior
-Completar colaboración antes de desarrollar. Luego seguir PLAN_DE_TRABAJO.md. No usar el CSV local como prueba de datos reales ni afirmar beneficio/descuento inexistentes. Cada integrante redactará su reflexión real.
+Auditoría29: tests/pruebas.md reestructurado con seis columnas y nueve pruebas; evidencia de Skill/SHA, tráfico MCP, SQL/captura Supabase, CSV país/mes/pedidos, descarga del mismo chat, errores de proveedor aislados. Rechazo meteorológico y SQL explícito en servidor cloud. Detalles en tests/auditoria_29/HALLAZGOS.md.

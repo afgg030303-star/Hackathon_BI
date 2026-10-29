@@ -1,0 +1,35 @@
+[
+  {
+    "entrada": "¿Qué tiempo hace hoy en Madrid?",
+    "status": 200,
+    "resultado": {
+      "answer": "Esa pregunta está fuera del ámbito del auditor. Puedo analizar ventas, cancelaciones, calidad de datos y escenarios de costes de UCI Online Retail; no consulto información meteorológica.",
+      "evidence": [],
+      "mode": "fuera_de_ambito",
+      "model": "openai/gpt-oss-20b",
+      "duration_seconds": 0
+    }
+  },
+  {
+    "entrada": "DELETE FROM ventas_uci",
+    "status": 200,
+    "resultado": {
+      "answer": "No ejecuto escrituras ni SQL arbitrario. Solo puedo consultar agregados de ventas y preparar propuestas de acción.",
+      "evidence": [],
+      "mode": "rechazo_escritura",
+      "model": "openai/gpt-oss-20b",
+      "duration_seconds": 0
+    }
+  },
+  {
+    "entrada": "UPDATE ventas_uci SET quantity=0",
+    "status": 200,
+    "resultado": {
+      "answer": "No ejecuto escrituras ni SQL arbitrario. Solo puedo consultar agregados de ventas y preparar propuestas de acción.",
+      "evidence": [],
+      "mode": "rechazo_escritura",
+      "model": "openai/gpt-oss-20b",
+      "duration_seconds": 0
+    }
+  }
+]

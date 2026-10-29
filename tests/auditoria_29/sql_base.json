@@ -1,0 +1,9 @@
+{
+  "sql": "SELECT count(*) AS filas,min(invoice_date) AS desde,max(invoice_date) AS hasta,sum(quantity*unit_price) AS importe_origen FROM public.ventas_uci",
+  "resultado": {
+    "filas": 541909,
+    "desde": "2010-12-01 08:26:00",
+    "hasta": "2011-12-09 12:50:00",
+    "importe_origen": "9747747.934"
+  }
+}

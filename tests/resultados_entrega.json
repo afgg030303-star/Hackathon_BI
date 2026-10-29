@@ -1,0 +1,117 @@
+[
+  {
+    "prueba": "Auditoría vs CSV completo",
+    "esperado": 40,
+    "observado": 40,
+    "estado": "PASS"
+  },
+  {
+    "prueba": "Todos los grupos",
+    "esperado": 4108,
+    "observado": 4108,
+    "estado": "PASS"
+  },
+  {
+    "prueba": "Borrador verificable y sin envío",
+    "esperado": "borrador_no_enviado",
+    "observado": "borrador_no_enviado",
+    "estado": "PASS"
+  },
+  {
+    "prueba": "KPI Francia vs CSV",
+    "esperado": [
+      "209715.11",
+      "12311.21",
+      "197403.90"
+    ],
+    "observado": {
+      "lineas": 8557,
+      "importe_neto": 197403.9,
+      "cancelaciones": 12311.21,
+      "pedidos_venta": 392,
+      "lineas_fuera_kpi": 1,
+      "ventas_positivas": 209715.11,
+      "otros_ajustes_negativos": 0
+    },
+    "estado": "PASS"
+  },
+  {
+    "prueba": "Simulación explícita",
+    "esperado": 50603.323,
+    "observado": {
+      "tipo": "SIMULACION_NO_BENEFICIO_REAL",
+      "supuesto_coste_porcentaje": 70,
+      "base_coste": "Ventas positivas; se supone que el coste no se recupera en cancelaciones",
+      "ventas_positivas": 209715.11,
+      "importe_neto": 197403.9,
+      "coste_estimado": 146800.577,
+      "resultado_estimado": 50603.323000000004,
+      "margen_estimado_porcentaje": 25.63440894531466,
+      "moneda": "GBP",
+      "limites": "Supuesto aportado por el usuario, no dato UCI. Excluye impuestos, gastos fijos y recuperación de costes. No es beneficio contable."
+    },
+    "estado": "PASS"
+  },
+  {
+    "prueba": "Fecha inválida /api/report?desde=2011-02-30",
+    "esperado": 422,
+    "observado": 422,
+    "estado": "PASS"
+  },
+  {
+    "prueba": "Fecha inválida /api/audit?desde=2012-01-01&hasta=2011-01-01",
+    "esperado": 422,
+    "observado": 422,
+    "estado": "PASS"
+  },
+  {
+    "prueba": "Coste inválido",
+    "esperado": 422,
+    "observado": 422,
+    "estado": "PASS"
+  },
+  {
+    "prueba": "País sin datos",
+    "esperado": 0,
+    "observado": 0,
+    "estado": "PASS"
+  },
+  {
+    "prueba": "Agente 0",
+    "esperado": "HTTP200 y llamadas MCP",
+    "observado": {
+      "status": 200,
+      "tools": [
+        "auditar_anomalias"
+      ]
+    },
+    "estado": "PASS"
+  },
+  {
+    "prueba": "Agente 1",
+    "esperado": "HTTP200 y llamadas MCP",
+    "observado": {
+      "status": 429,
+      "tools": []
+    },
+    "estado": "FAIL"
+  },
+  {
+    "prueba": "MCP catálogo",
+    "esperado": 6,
+    "observado": 6,
+    "estado": "PASS"
+  },
+  {
+    "prueba": "MCP auditoría real",
+    "esperado": false,
+    "observado": false,
+    "estado": "PASS"
+  },
+  {
+    "prueba": "MCP rechaza SQL arbitrario",
+    "esperado": true,
+    "observado": true,
+    "estado": "PASS"
+  }
+]

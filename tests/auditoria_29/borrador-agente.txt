@@ -1,0 +1,16 @@
+BORRADOR NO ENVIADO
+Para: Responsable comercial y administración (revisar destinatario)
+Asunto: Revisión de ventas y cancelaciones · 2010-12-01 a 2011-12-09
+
+Hola equipo:
+
+La auditoría de UCI Online Retail del 2010-12-01 al 2011-12-09 para France ha identificado 1 señales con umbrales heurísticos.
+
+producto: M; cancelaciones 9502.86 GBP; neto -10.49 GBP.
+Acción propuesta: Conciliar abonos y ventas del periodo; clasificar el código como mercancía o ajuste contable antes de modificar precios.
+
+Solicitamos conciliar las facturas y documentar los motivos antes de decidir cambios comerciales. No hay evidencia de costes, descuentos o causas; estos importes no son beneficios. Los grupos pueden solaparse y no deben sumarse.
+
+Propuesta: revisar en la próxima reunión comercial y repetir el análisis tras validar las incidencias.
+
+Borrador para revisión humana; no se ha enviado ningún correo.

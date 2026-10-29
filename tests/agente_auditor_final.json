@@ -1,0 +1,47 @@
+{
+  "answer": "AUDITORÍA · 2010-12-01 a 2011-12-09 · France\n1 señales en 1544 grupos. Se muestran 1.\n\nDATO CRÍTICO: producto: M; cancelaciones 9502.86 GBP; neto -10.49 GBP.\nSEÑAL: neto_negativo; cancelaciones/ventas 100.11%.\nHIPÓTESIS: La causa no está demostrada. Puede haber anulaciones, correcciones o asientos contables; contrastar facturas originales.\nACCIÓN PROPUESTA: Conciliar abonos y ventas del periodo; clasificar el código como mercancía o ajuste contable antes de modificar precios.\nRESPONSABLE: Responsable comercial y administración\nVALIDACIÓN: Documentar el motivo de cada incidencia, repetir la auditoría y comparar periodos completos equivalentes.\n\nREGLAS: Neto negativo y cancelaciones >=100 GBP; o cancelaciones/ventas >=20% con ventas >=1000 GBP. Umbrales heurísticos, no estadísticos.\nLÍMITES: Grupos país y producto pueden solaparse; no sumar sus importes. No demuestra pérdidas ni causas. Sin costes, descuentos o logística. Hasta 12 alertas ordenadas por importe cancelado.",
+  "evidence": [
+    {
+      "tool": "auditar_anomalias",
+      "arguments": {
+        "desde": "2010-12-01",
+        "hasta": "2011-12-09",
+        "pais": "France"
+      },
+      "result": {
+        "pais": "France",
+        "desde": "2010-12-01",
+        "hasta": "2011-12-09",
+        "fuente": "UCI Online Retail",
+        "moneda": "GBP",
+        "reglas": "Neto negativo y cancelaciones >=100 GBP; o cancelaciones/ventas >=20% con ventas >=1000 GBP. Umbrales heurísticos, no estadísticos.",
+        "alertas": [
+          {
+            "grupo": "M",
+            "regla": "neto_negativo",
+            "lineas": 10,
+            "dimension": "producto",
+            "importe_neto": -10.49,
+            "cancelaciones": 9502.86,
+            "tasa_cancelacion": 100.11,
+            "ventas_positivas": 9492.37,
+            "dato_critico": "producto: M; cancelaciones 9502.86 GBP; neto -10.49 GBP.",
+            "hipotesis": "La causa no está demostrada. Puede haber anulaciones, correcciones o asientos contables; contrastar facturas originales.",
+            "accion": "Conciliar abonos y ventas del periodo; clasificar el código como mercancía o ajuste contable antes de modificar precios.",
+            "responsable": "Responsable comercial y administración",
+            "validacion": "Documentar el motivo de cada incidencia, repetir la auditoría y comparar periodos completos equivalentes."
+          }
+        ],
+        "limites": "Grupos país y producto pueden solaparse; no sumar sus importes. No demuestra pérdidas ni causas. Sin costes, descuentos o logística. Hasta 12 alertas ordenadas por importe cancelado.",
+        "consultado_en": "2026-10-29T07:38:40.563168+00:00",
+        "alertas_activas": 1,
+        "grupos_analizados": 1544,
+        "lineas_analizadas": 8557
+      },
+      "transport": "MCP Streamable HTTP"
+    }
+  ],
+  "model": "openai/gpt-oss-20b",
+  "duration_seconds": 0.635,
+  "mode": "agente_groq_cloud"
+}

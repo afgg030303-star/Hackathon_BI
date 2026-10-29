@@ -1,0 +1,88 @@
+[
+  {
+    "prueba": "Groq sin clave / proveedor401",
+    "esperado": 503,
+    "obtenido": 503,
+    "respuesta": {
+      "detail": "No se pudo completar la consulta. Revisa los filtros o inténtalo de nuevo."
+    },
+    "llamadas": [
+      "https://site.test/api/mcp",
+      "https://site.test/api/mcp",
+      "https://api.groq.com/openai/v1/chat/completions"
+    ],
+    "estado": "PASS",
+    "entorno": "inyección aislada, backend cloud real"
+  },
+  {
+    "prueba": "Supabase no disponible",
+    "esperado": 503,
+    "obtenido": 503,
+    "respuesta": {
+      "detail": "No se pudo completar la consulta. Revisa los filtros o inténtalo de nuevo."
+    },
+    "llamadas": [
+      "https://site.test/api/mcp",
+      "https://site.test/api/mcp",
+      "https://db.test/rest/v1/rpc/bi_audit"
+    ],
+    "estado": "PASS",
+    "entorno": "inyección aislada, backend cloud real"
+  },
+  {
+    "prueba": "Cuota Groq429",
+    "esperado": 429,
+    "obtenido": 429,
+    "respuesta": {
+      "detail": "Groq ha alcanzado su cuota temporal. Espera y vuelve a probar; el panel de datos sigue disponible."
+    },
+    "llamadas": [
+      "https://site.test/api/mcp",
+      "https://site.test/api/mcp",
+      "https://api.groq.com/openai/v1/chat/completions"
+    ],
+    "estado": "PASS",
+    "entorno": "inyección aislada, backend cloud real"
+  },
+  {
+    "prueba": "Sin coste supuesto",
+    "esperado": 422,
+    "obtenido": 422,
+    "respuesta": {
+      "detail": "Parámetros inválidos: revisa fechas, país y límites."
+    },
+    "llamadas": [],
+    "estado": "PASS",
+    "entorno": "inyección aislada, backend cloud real"
+  },
+  {
+    "prueba": "Fuera de ámbito no llama proveedores",
+    "esperado": 200,
+    "obtenido": 200,
+    "respuesta": {
+      "answer": "Esa pregunta está fuera del ámbito del auditor. Puedo analizar ventas, cancelaciones, calidad de datos y escenarios de costes de UCI Online Retail; no consulto información meteorológica.",
+      "evidence": [],
+      "mode": "fuera_de_ambito",
+      "model": "openai/gpt-oss-20b",
+      "duration_seconds": 0
+    },
+    "llamadas": [],
+    "estado": "PASS",
+    "entorno": "inyección aislada, backend cloud real"
+  },
+  {
+    "prueba": "DELETE no llama proveedores",
+    "esperado": 200,
+    "obtenido": 200,
+    "respuesta": {
+      "answer": "No ejecuto escrituras ni SQL arbitrario. Solo puedo consultar agregados de ventas y preparar propuestas de acción.",
+      "evidence": [],
+      "mode": "rechazo_escritura",
+      "model": "openai/gpt-oss-20b",
+      "duration_seconds": 0
+    },
+    "llamadas": [],
+    "estado": "PASS",
+    "entorno": "inyección aislada, backend cloud real"
+  }
+]
