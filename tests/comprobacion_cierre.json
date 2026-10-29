@@ -1,0 +1,23 @@
+{
+  "fecha": "2026-10-29T12:55:15.123977+00:00",
+  "url": "https://observatorio-retail-bi.balmyspark1.chatgpt.site",
+  "alcance": "Comprobación final de lectura: KPI y catálogo MCP. Sin consumo Groq ni modificación del agente.",
+  "metricas": {
+    "lineas": 1580,
+    "importe_neto": 30697.51,
+    "cancelaciones": 1061.2,
+    "pedidos_venta": 64,
+    "lineas_fuera_kpi": 1,
+    "ventas_positivas": 31758.71,
+    "otros_ajustes_negativos": 0
+  },
+  "herramientas": [
+    "resumen_ventas",
+    "comparar_grupos",
+    "auditar_anomalias",
+    "redactar_borrador",
+    "estimar_escenario",
+    "comprobar_calidad"
+  ],
+  "estado": "PASS"
+}
