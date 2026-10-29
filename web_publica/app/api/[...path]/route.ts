@@ -3,6 +3,10 @@ import { skill } from '../../../skill';
 import { enrichAudit, draftAudit, estimateScenario, groundedAnswer } from '../../../audit.mjs';
 const settings=()=>env as unknown as Record<string,string>;
 const model='openai/gpt-oss-20b';
+async function completed(evidence:any[],answer:string,started:number){
+ const hash=Array.from(new Uint8Array(await crypto.subtle.digest('SHA-256',new TextEncoder().encode(skill)))).map(b=>b.toString(16).padStart(2,'0')).join('');
+ return Response.json({answer,evidence,model,duration_seconds:(Date.now()-started)/1000,mode:'agente_groq_cloud',skill:{name:'auditar-ventas',source:'skills/auditar_ventas/SKILL.md',sha256:hash,loaded_as:'system_instructions',executed_procedures:evidence.map(e=>e.tool)}});
+}
 const properties={desde:{type:'string',description:'Fecha ISO YYYY-MM-DD, por defecto 2010-12-01'},hasta:{type:'string',description:'Fecha ISO inclusiva, por defecto 2011-12-09'},pais:{type:['string','null'],description:'Nombre exacto en inglés, por ejemplo France; null para todos'}};
 const catalogue=[
 {name:'resumen_ventas',description:'Ventas positivas, cancelaciones e importe neto GBP. No beneficio.',inputSchema:{type:'object',properties,additionalProperties:false}},
@@ -73,6 +77,9 @@ async function route(req:Request){
  if(u.pathname==='/api/chat'&&req.method==='POST'){
  const raw=await req.text();if(raw.length>8192)return Response.json({detail:'Solicitud demasiado grande'},{status:413});
  const {question}=JSON.parse(raw);if(typeof question!=='string'||question.trim().length<3||question.length>1500)return Response.json({detail:'Escribe una pregunta de 3 a 1500 caracteres'},{status:422});
+ const normalized=question.normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase();
+ if(/\b(delete|update|insert|drop|truncate|alter)\b/.test(normalized))return Response.json({answer:'No ejecuto escrituras ni SQL arbitrario. Solo puedo consultar agregados de ventas y preparar propuestas de acción.',evidence:[],mode:'rechazo_escritura',model,duration_seconds:0});
+ if(/que tiempo hace|clima en|pronostico meteorologico|temperatura en/.test(normalized))return Response.json({answer:'Esa pregunta está fuera del ámbito del auditor. Puedo analizar ventas, cancelaciones, calidad de datos y escenarios de costes de UCI Online Retail; no consulto información meteorológica.',evidence:[],mode:'fuera_de_ambito',model,duration_seconds:0});
  const started=Date.now(),evidence:any[]=[],messages:any[]=[{role:'system',content:skill},{role:'user',content:question}];
  await mcpCall(u.origin,'initialize',{protocolVersion:'2025-03-26',capabilities:{},clientInfo:{name:'BI agent',version:'1.0'}});
  const tools=(await mcpCall(u.origin,'tools/list')).tools.map((t:any)=>({type:'function',function:{name:t.name,description:t.description,parameters:t.inputSchema}}));
@@ -80,10 +87,10 @@ async function route(req:Request){
  const r=await fetch('https://api.groq.com/openai/v1/chat/completions',{method:'POST',headers:{Authorization:'Bearer '+settings().GROQ_API_KEY,'Content-Type':'application/json'},body:JSON.stringify({model,messages,tools,temperature:0,max_completion_tokens:1200}),signal:AbortSignal.timeout(40000)});
  if(r.status===429)return Response.json({detail:'Groq ha alcanzado su cuota temporal. Espera y vuelve a probar; el panel de datos sigue disponible.'},{status:429});
  if(!r.ok)throw Error('El modelo no está disponible');const b:any=await r.json(),msg=b.choices[0].message;messages.push(msg);
- if(!msg.tool_calls?.length){if(evidence.length)return Response.json({answer:groundedAnswer(evidence,msg.content),evidence,model,duration_seconds:(Date.now()-started)/1000,mode:'agente_groq_cloud'});messages.push({role:'user',content:'Consulta una herramienta MCP antes de responder.'});continue;}
+ if(!msg.tool_calls?.length){if(evidence.length)return completed(evidence,groundedAnswer(evidence,msg.content),started);messages.push({role:'user',content:'Consulta una herramienta MCP antes de responder.'});continue;}
  if(evidence.length+msg.tool_calls.length>8)throw Error('Consulta demasiado extensa');
  for(const call of msg.tool_calls){const args=JSON.parse(call.function.arguments);const result=await tool(u.origin,call.function.name,args);evidence.push({tool:call.function.name,arguments:args,result,transport:'MCP Streamable HTTP'});messages.push({role:'tool',tool_call_id:call.id,content:JSON.stringify(result)});}
- if(evidence.some(e=>['auditar_anomalias','redactar_borrador'].includes(e.tool)))return Response.json({answer:groundedAnswer(evidence,''),evidence,model,duration_seconds:(Date.now()-started)/1000,mode:'agente_groq_cloud'});
+ if(evidence.some(e=>['auditar_anomalias','redactar_borrador'].includes(e.tool)))return completed(evidence,groundedAnswer(evidence,''),started);
  }throw Error('Reformula la pregunta: se alcanzó el límite de pasos');
  }
  return Response.json({detail:'Ruta no disponible'},{status:404});

@@ -29,4 +29,3 @@ Son piezas distintas: GitHub aloja código, documentación e historial; Supabase
 Guardar SQL del esquema, scripts de importación, dataset con licencia/fuente y huella, dependencias verificadas, README, arquitectura, Skill, configuración MCP de ejemplo sin claves, evidencias, prompts y REFLEXION.md. Excluir .env, claves, contraseñas, entornos virtuales y registros con secretos. Si el tamaño de datos dificulta GitHub, conservar un subconjunto temporal reproducible y documentado junto con script para descargar el original; nunca inventar filas.
 
 Bibliotecas candidatas de GitHub: https://github.com/modelcontextprotocol/python-sdk y https://github.com/fastapi/fastapi. Registrar versión y licencia utilizadas una vez instaladas y verificadas.
-

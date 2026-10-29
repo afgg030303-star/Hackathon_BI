@@ -1,0 +1,35 @@
+{
+  "entrada": {
+    "pais": "France",
+    "desde": "2011-11-01",
+    "hasta": "2011-11-30"
+  },
+  "comparacion": {
+    "ventas_positivas": {
+      "csv": "31758.71",
+      "web": "31758.71",
+      "coincide": true
+    },
+    "cancelaciones": {
+      "csv": "1061.20",
+      "web": "1061.2",
+      "coincide": true
+    },
+    "importe_neto": {
+      "csv": "30697.51",
+      "web": "30697.51",
+      "coincide": true
+    },
+    "pedidos_venta": {
+      "csv": "64",
+      "web": "64",
+      "coincide": true
+    },
+    "lineas": {
+      "csv": "1580",
+      "web": "1580",
+      "coincide": true
+    }
+  },
+  "estado": "PASS"
+}

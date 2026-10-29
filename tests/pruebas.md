@@ -1,27 +1,35 @@
-# Batería de pruebas de entrega
-Ejecuciones 28–29/10/2026. Resultados reproducibles en los archivos citados. PASS significa caso ejecutado, no garantía general.
+# Batería de nueve pruebas — auditoría ejecutada el 29/10/2026
 
-| Componente | Entrada / esperado | Observado y evidencia | Estado |
-|---|---|---|---|
-| Agente | Auditar Francia, elegir herramientas | auditar_anomalias con France; agente_auditor_final.json | PASS |
-| Skill | No confundir neto y beneficio | beneficio_limites_retest.json: consulta resumen y explica costes ausentes | PASS |
-| MCP | Inicializar, listar y ejecutar | 6 herramientas; cliente oficial; resultados_entrega.json y auditoria_mcp_local.json | PASS |
-| Base de datos | Dataset real completo | 541909 filas conciliadas; carga_uci.json; 0 filas crudas para anon en seguridad_rls.json | PASS |
-| Backend | Auditoría y escenario70% | 4108 grupos, 40 alertas; Francia resultado estimado50603.323; resultados_entrega.json | PASS |
-| Frontend | Seleccionar France, actualizar, abrir escenario y borrador | 197403.90 neto; código M; escenario70% y borrador visibles; auditoria_web.png y interfaz_verificada.md | PASS casos realizados |
-| Flujo completo | Web/API → Groq → MCP → Supabase → evidencia | agente_auditor_final.json; respuesta del modelo y consulta real | PASS |
-| Errores | Fecha imposible, rango invertido, coste negativo, sin datos, SQL arbitrario | 422, cero filas y error MCP controlado; resultados_entrega.json. Fallo DB simulado503 sin secreto: pruebas_api_local.txt | PASS |
-| Validación BI | Comparar CSV independiente con SQL | script recorre CSV completo con Decimal: 40 señales,4108 grupos y KPI de Francia coinciden | PASS |
+Ámbito: versión pública5 del Observatorio Retail. Las evidencias nuevas están en `auditoria_29/`. Se conservan errores históricos y se distinguen pruebas reales de fallos inyectados. PASS acredita el caso probado, no todos los posibles comportamientos.
 
-## Ejecución y archivos
-`python tests/validar_publico.py` hace la comparación independiente y consume dos consultas de Groq. `node --test tests/unit/audit.test.mjs`: 4 pruebas correctas. `python -m pytest tests/unit/test_api_local.py -q`: 4 pruebas correctas, con aviso de deprecación de dependencias. No se ocultan los avisos en el log.
+| Entrada (prueba) | Esperado | Obtenido | Estado | Evidencia | Causa o corrección / límite |
+|---|---|---|---|---|---|
+| **1. Agente:** «Redacta un borrador de email con las alertas de Francia.» | Elegir herramienta y redactar desde datos reales | Elige redactar_borrador, pais France, periodo completo; devuelve código M y acción de conciliación | PASS | [Traza visible](auditoria_29/skill_y_mcp_navegador.json), [captura](auditoria_29/chat_skill_mcp.png) | Antes solo había evidencia de auditoría; ahora existe la pregunta exacta solicitada |
+| **2. Skill:** cargar auditar-ventas y ejecutar su protocolo de borrador | Instrucciones identificables y capacidad propia ejecutada | SHA256 coincide con SKILL.md; executed_procedures contiene redactar_borrador; aplica auditoría, hipótesis, acción y no envío | PASS | [Skill](../skills/auditar_ventas/SKILL.md), [verificación](auditoria_29/verificacion_descarga.json), [traza](auditoria_29/skill_y_mcp_navegador.json) | La Skill se carga como instrucciones del sistema; no es una llamada a un servicio separado. Su procedimiento se implementa en audit.mjs y se ejecuta mediante MCP |
+| **3. MCP:** initialize → tools/list → tools/call | Protocolo HTTP JSON-RPC real, catálogo y resultado | 6 herramientas; redactar_borrador responde con contenido y structuredContent; SQL arbitrario devuelve isError | PASS | [Peticiones y respuestas HTTP](auditoria_29/mcp_http_real.json), [SDK oficial](resultados_entrega.json) | No es una función local renombrada: endpoint público /api/mcp y cliente SDK previamente validado |
+| **4. Base de datos:** SELECT COUNT, fechas y suma en ventas_uci | 541909 filas, periodo y suma del original | SQL:541909 filas, bruto9747747.934 GBP; captura de tabla Supabase | PASS | [Consulta SQL y resultado](auditoria_29/sql_base.json), [captura Supabase](auditoria_29/supabase_ventas_uci.png), [perfil original](../data/perfil_uci.json) | El editor muestra541.9K estimadas; COUNT SQL aporta el valor exacto. No confundir con tabla histórica Superstore |
+| **5. Backend:** auditar France, periodo completo | Regla de alerta calculada con datos | Código M: ventas9492.37, cancelaciones9502.86, neto−10.49; neto<0 y cancelaciones≥100 activa alerta; tasa100.11% | PASS | [Resultado MCP](auditoria_29/skill_y_mcp_navegador.json), [SQL de reglas](../data/migrations/003_auditoria.sql) | La señal no acredita pérdida contable ni causa. Se propone conciliar |
+| **6. Frontend:** filtrar France, noviembre2011; consultar chat y descargar | Interacción real con datos y archivo | Filtros usados; chat respondió; botón descargó borrador-agente.txt | PASS | [Recorrido](auditoria_29/recorrido.md), [TXT descargado](auditoria_29/borrador-agente.txt), [captura chat](auditoria_29/chat_skill_mcp.png), [captura filtros](auditoria_29/filtros_mes.png) | Selector corregido en revisión anterior; no se presenta una simple captura estática como interacción |
+| **7. Flujo completo:** misma pregunta hasta descarga | Pregunta → agente/Skill → MCP → Supabase → resultado → TXT | Traza del navegador y archivo descargado del mismo mensaje; coincidencia del cuerpo verificada | PASS | [Secuencia única](auditoria_29/recorrido.md), [verificación de descarga](auditoria_29/verificacion_descarga.json) | Documentado con captura, log y artefacto; no hay vídeo grabado |
+| **8. Errores:** seis casos de la revisión | Respuestas claras, sin escrituras ni secretos | Ver tabla siguiente: vacíos,422, rechazo de ámbito/escritura,503/429 aislados | PASS casos indicados | [Fallos aislados](auditoria_29/fallos_aislados.json), [rechazos públicos](auditoria_29/rechazos_publicos.json) | La caída de proveedores se inyecta sobre el backend real en entorno aislado; no se retiran claves públicas |
+| **9. Validación BI:** CSV independiente, France noviembre2011 | Igualdad de ventas,cancelaciones,neto,pedidos y líneas | Ventas31758.71; cancelaciones1061.20; neto30697.51;64 pedidos;1580 líneas. Coinciden cinco métricas | PASS | [Conciliación](auditoria_29/conciliacion_pais_mes.json), [script reproducible](auditar_evidencias.py) | Cálculo con csv/Decimal y conjunto de facturas distintas, independiente de SQL; original XLSX conciliado en carga_uci.json |
 
-## Errores encontrados y correcciones
-1. La primera respuesta inventó1557 líneas de cancelación: chat_publico.json. Se reforzó Skill. Otra respuesta añadió un umbral10% no presente en la regla: agente_auditor_0.json. Ahora auditorías y borradores se componen directamente desde evidencia estructurada; el LLM sigue seleccionando herramientas. Esto evita esos añadidos en dichas salidas, no garantiza infalibilidad de todo texto libre.
-2. Selector de países con etiquetas option incompletas: la prueba de navegador no podía seleccionar France. Se reconstruyó con todos los países del CSV; selección y filtro comprobados.
-3. Fechas inválidas devolvían503; ahora422, incluidos 2011-02-30 y rango invertido.
-4. Groq429 en la segunda pregunta de la batería: se conserva agente_auditor_1.json y el FAIL original en resultados_entrega.json. La repetición posterior beneficio_limites_retest.json devuelve200 y reconoce que no se puede calcular beneficio. No se borra el fallo original. Auditoría, panel y borrador siguen funcionando sin Groq.
-5. Errores de lectura de la pestaña en la herramienta de revisión final: la comprobación visual previa y su captura se conservaron; la verificación posterior del agente se hizo mediante API pública.
+## Casos de error
 
-## Seguridad y límites
-RLS bloquea lectura de filas y escritura anónimas. Prueba de escritura con rollback incondicional: seguridad_rls.json. Las funciones públicas solo devuelven agregados UCI. No se ha probado carga masiva, usuarios concurrentes ni disponibilidad continua. Refresco60s requiere página visible; no se ha medido ahorro de tiempo comercial ni precisión causal. health indica configuración, no disponibilidad garantizada.
+| Entrada | Esperado | Obtenido | Estado | Evidencia | Causa o corrección / límite |
+|---|---|---|---|---|---|
+| País NO_EXISTE / periodo2020 sin filas | Cero filas e importes, no cifras inventadas | Cero; informe disponible | PASS | [Periodo vacío](auditoria_29/periodo_vacio.json), [país vacío](resultados_entrega.json) | No equivale a ausencia de problemas en otros periodos |
+| Desde2012-01-01 > hasta2011-01-01 | Rechazo422 | HTTP422 | PASS | [Rango inválido](auditoria_29/fechas_invertidas.json) | Antes503, corregido |
+| «¿Qué tiempo hace hoy en Madrid?» | Explicar fuera de ámbito sin gastar cuota | mode fuera_de_ambito, evidence vacía, sin proveedor | PASS | [Rechazos públicos](auditoria_29/rechazos_publicos.json), [fallos aislados](auditoria_29/fallos_aislados.json) | Antes llegó a Groq y recibió429: fuera_ambito_antes.json. Filtro específico de meteorología, no clasificador universal |
+| Groq sin clave/401, cuota429; Supabase503 | Error controlado, ningún secreto | Respuestas503/429 sin contenido privado del proveedor | PASS aislado | [Inyección sobre backend cloud](auditoria_29/fallos_aislados.json), [script](fallos_cloud.mjs) | Se sustituyen env/fetch en pruebas; credenciales de producción intactas. La cuota429 también se observó realmente |
+| DELETE o UPDATE pedidos por chat / SQL arbitrario por MCP | No ejecutar escritura | mode rechazo_escritura, cero llamadas; MCP isError para parámetro sql | PASS | [Chat](auditoria_29/rechazos_publicos.json), [MCP](auditoria_29/mcp_http_real.json), [RLS previo](seguridad_rls.json) | El filtro textual es adicional; protección real: catálogo sin escrituras, SQL fijo y RLS |
+| Escenario sin coste_porcentaje | No calcular beneficio ni asumir cero | API422; formulario requiere dato | PASS API y navegador | [Respuesta](auditoria_29/sin_supuesto.json), [inyección](auditoria_29/fallos_aislados.json) | Sin supuesto no hay cálculo; comprobado valueMissing=true tras pulsar Calcular; ver [navegador](auditoria_29/sin_supuesto_navegador.json) |
+
+## Reproducción
+- `python tests/auditar_evidencias.py`: CSV/mes, SQL directo de lectura, MCP y errores. Requiere DATABASE_URL en .env para SQL; nunca lo imprime.
+- `node tests/fallos_cloud.mjs`: backend cloud real con dependencias de prueba. Antes instalar dependencias de web_publica. BI_SOURCE_DIR permite otro checkout con node_modules; no lee .env.
+- `node --test tests/unit/audit.test.mjs` y `python -m pytest tests/unit/test_api_local.py -q`: ocho pruebas previas correctas.
+- El recorrido de navegador se describe en auditoria_29/recorrido.md; no es un script de vídeo.
+
+## Hallazgos y límites
+Se preservan fallos históricos: recuento1557 inventado, umbral10% añadido por LLM, selector de países inválido y cuota429. Auditorías/borradores se componen ahora desde datos estructurados; el resto del texto libre aún requiere revisión. No hay prueba de carga, vigilancia con navegador cerrado ni evidencia causal. health muestra configuración, no disponibilidad garantizada. La revisión individual de REFLEXION.md sigue siendo humana.

@@ -47,3 +47,5 @@ El escenario de rentabilidad requiere un porcentaje de coste introducido por el 
 - `tests/pruebas.md`: matriz con resultados reales, errores y evidencias.
 - `ENTREGA.md`: cobertura de todos los requisitos y pendientes humanos.
 - `DEFENSA.md`: guion de demostración y preguntas para preparar.
+
+Auditoría de entrega actualizada: `tests/auditoria_29/` conserva el recorrido de borrador descargado, traza Skill/MCP, SQL, captura Supabase y comparación CSV por país/mes. `tests/pruebas.md` contiene las seis columnas para las nueve pruebas y casos de error.

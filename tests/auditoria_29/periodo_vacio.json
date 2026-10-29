@@ -1,0 +1,45 @@
+{
+  "status": 200,
+  "body": {
+    "summary": {
+      "pais": null,
+      "desde": "2020-01-01",
+      "hasta": "2020-01-31",
+      "fuente": "UCI Online Retail",
+      "moneda": "GBP",
+      "limites": "Importe neto no es beneficio; no hay costes. Diciembre 2011 es parcial.",
+      "metricas": {
+        "lineas": 0,
+        "importe_neto": 0,
+        "cancelaciones": 0,
+        "pedidos_venta": 0,
+        "lineas_fuera_kpi": 0,
+        "ventas_positivas": 0,
+        "otros_ajustes_negativos": 0
+      }
+    },
+    "countries": {
+      "pais": null,
+      "desde": "2020-01-01",
+      "filas": [],
+      "hasta": "2020-01-31",
+      "orden": "importe_neto descendente",
+      "fuente": "UCI Online Retail",
+      "moneda": "GBP",
+      "limites": "Importe neto no es beneficio; no hay costes. Diciembre 2011 es parcial.",
+      "dimension": "pais"
+    },
+    "months": {
+      "pais": null,
+      "desde": "2020-01-01",
+      "filas": [],
+      "hasta": "2020-01-31",
+      "orden": "importe_neto descendente",
+      "fuente": "UCI Online Retail",
+      "moneda": "GBP",
+      "limites": "Importe neto no es beneficio; no hay costes. Diciembre 2011 es parcial.",
+      "dimension": "mes"
+    },
+    "transport": "MCP Streamable HTTP"
+  }
+}

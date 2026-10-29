@@ -1,0 +1,6 @@
+{
+  "status": 422,
+  "body": {
+    "detail": "Par\u00e1metros inv\u00e1lidos: revisa fechas, pa\u00eds y l\u00edmites."
+  }
+}
