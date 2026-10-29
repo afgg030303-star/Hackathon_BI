@@ -13,7 +13,7 @@ Audita ventas y cancelaciones de un comercio real, consulta alertas y prepara ac
 - `agents/`, `skills/`, `config/`: agente, Skill y MCP.
 - `tests/`: evidencias reales y resultados.
 - `00_prompts_ia/`: resúmenes de sesiones y relevo sin secretos.
-- `REFLEXION.md`: índice hacia la única reflexión elegida, `Reflexion_Equipo_Auditor_Ventas.md`.
+- `REFLEXION.md`: respuestas completas de los tres integrantes y reflexión conjunta, tomadas del documento elegido `Reflexion_Equipo_Auditor_Ventas.md`.
 
 ## Ejecutar localmente
 Python 3.13. Crear `.venv`, instalar `backend/requirements.txt`, copiar `.env.example` a `.env` si no existe. Configurar DATABASE_URL y GROQ_API_KEY. Ejecutar:

@@ -12,7 +12,7 @@ Web: https://observatorio-retail-bi.balmyspark1.chatgpt.site/
 | Librería de GitHub | LIBRERIAS.md | SDK MCP y otras dependencias con uso documentado |
 | Ejecución | README.md y .env.example | Configuración sin credenciales; publicar y hacer push son operaciones distintas |
 | Batería de pruebas | tests/pruebas.md; tests/auditoria_29/ | Nueve casos con entrada, esperado, obtenido, estado, evidencia y causa/corrección |
-| Reflexión individual y colectiva | REFLEXION.md enlaza Reflexion_Equipo_Auditor_Ventas.md | Única reflexión elegida; confirmar propuestas indicadas dentro |
+| Reflexión individual y colectiva | REFLEXION.md contiene íntegramente la reflexión elegida | Única reflexión elegida; confirmar propuestas indicadas dentro |
 | Registro de IA y continuidad | 00_prompts_ia/; AGENTS.md; ESTADO_PROYECTO.md | Resúmenes identificados; no exportación íntegra automática de chats |
 | Defensa | output/pdf/Guia_defensa_auditor_ventas.pdf; DEFENSA.md | Guion, respuestas, cifras y plan de contingencia |
 
