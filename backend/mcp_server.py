@@ -19,5 +19,24 @@ def comprobar_calidad() -> dict:
     """Consulta procedencia UCI, cobertura temporal, recuentos, nulos y precios no positivos del dataset completo."""
     return calidad()
 
+@mcp.tool()
+def auditar_anomalias(desde: str='2010-12-01',hasta: str='2011-12-09',pais: str|None=None) -> dict:
+    """Audita todos los grupos, detecta señales y propone acciones, sin inferir causas."""
+    from audit import audit
+    return audit(Periodo(desde=desde,hasta=hasta,pais=pais))
+
+@mcp.tool()
+def redactar_borrador(desde: str='2010-12-01',hasta: str='2011-12-09',pais: str|None=None) -> dict:
+    """Genera un borrador de email a partir de la auditoría; nunca envía."""
+    from audit import draft
+    data=auditar_anomalias(desde,hasta,pais)
+    return {**draft(data),'auditoria':data}
+
+@mcp.tool()
+def estimar_escenario(coste_porcentaje: float,desde: str='2010-12-01',hasta: str='2011-12-09',pais: str|None=None) -> dict:
+    """Simulación con coste supuesto explícito del usuario; no beneficio real."""
+    from audit import scenario
+    return scenario(Periodo(desde=desde,hasta=hasta,pais=pais),coste_porcentaje)
+
 if __name__=='__main__':
     mcp.run(transport='stdio')

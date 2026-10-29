@@ -9,7 +9,7 @@ from config import ROOT
 from db import Periodo
 from agent import run_agent, report, model_status, AgentUnavailable
 
-app=FastAPI(title='Observatorio Retail · Agente BI local',version='0.1.0')
+app=FastAPI(title='Observatorio Retail · Agente BI local',version='1.0.0')
 app.add_middleware(TrustedHostMiddleware,allowed_hosts=['127.0.0.1','localhost','testserver'])
 app.mount('/assets',StaticFiles(directory=ROOT/'frontend'),name='assets')
 agent_lock=asyncio.Lock()
@@ -38,3 +38,27 @@ async def chat(body: Question):
     async with agent_lock:
         try: return await run_agent(body.question)
         except AgentUnavailable as exc: raise HTTPException(503,str(exc)) from None
+
+
+@app.get('/api/audit')
+async def audit_api(desde: date=date(2010,12,1),hasta: date=date(2011,12,9),pais: str|None=None):
+    from mcp_client import connect_mcp, call_tool
+    from audit import draft
+    try: p=Periodo(desde=desde,hasta=hasta,pais=pais)
+    except ValueError: raise HTTPException(422,'Periodo inválido') from None
+    try:
+        async with connect_mcp() as session:
+            data=await call_tool(session,'auditar_anomalias',p.model_dump(mode='json'))
+        return {'audit':data,'draft':draft(data),'transport':'MCP stdio'}
+    except Exception: raise HTTPException(503,'Auditoría no disponible') from None
+
+class Scenario(Periodo):
+    coste_porcentaje: float=Field(ge=0,le=200)
+
+@app.post('/api/scenario')
+async def scenario_api(body: Scenario):
+    from mcp_client import connect_mcp,call_tool
+    try:
+        async with connect_mcp() as session:
+            return await call_tool(session,'estimar_escenario',body.model_dump(mode='json'))
+    except Exception: raise HTTPException(503,'Escenario no disponible') from None

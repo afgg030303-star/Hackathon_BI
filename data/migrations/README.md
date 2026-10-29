@@ -1,3 +1,2 @@
-# Migraciones compartidas
-
-Guardar aquí cada cambio SQL numerado y documentar cuándo y quién lo aplica. La carpeta no ejecuta ni sincroniza cambios automáticamente. Todavía no se ha aplicado ninguna migración desde este proyecto.
+# Migraciones aplicadas
+001: tablas UCI y RLS; 002: RPC de agregados; 003: auditoría por reglas. Aplicadas en el proyecto compartido el 28/10/2026, sin borrar ventas_superstore. Véase ../BASE_DE_DATOS.md.

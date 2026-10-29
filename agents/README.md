@@ -1,3 +1,3 @@
 # Agente coordinador
-
-Implementación ejecutable: [backend/agent.py](../backend/agent.py). Usa Qwen local con Ollama; descubre herramientas mediante ClientSession, el modelo las selecciona, el cliente las ejecuta por MCP stdio, y el modelo redacta la respuesta. Skill: [auditar_ventas](../skills/auditar_ventas/SKILL.md). No usa OpenAI ni una API de pago.
+Implementación pública: `web_publica/app/api/[...path]/route.ts`. Alternativa local: `backend/agent.py`. Groq con openai/gpt-oss-20b; sin API de OpenAI. Skill: skills/auditar_ventas/SKILL.md. Catálogo de seis herramientas MCP.
+El agente debe consultar datos antes de responder. Decide herramientas y parámetros, conserva las trazas y distingue hechos, hipótesis, acciones y supuestos. Auditorías y borradores se renderizan con cifras estructuradas verificadas. Ninguna acción cambia políticas comerciales ni envía mensajes.

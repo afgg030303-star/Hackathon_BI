@@ -1,0 +1,30 @@
+{
+  "pais": "France",
+  "desde": "2010-12-01",
+  "hasta": "2011-12-09",
+  "fuente": "UCI Online Retail",
+  "moneda": "GBP",
+  "reglas": "Neto negativo y cancelaciones >=100 GBP; o cancelaciones/ventas >=20% con ventas >=1000 GBP. Umbrales heurísticos, no estadísticos.",
+  "alertas": [
+    {
+      "grupo": "M",
+      "regla": "neto_negativo",
+      "lineas": 10,
+      "dimension": "producto",
+      "importe_neto": -10.49,
+      "cancelaciones": 9502.86,
+      "tasa_cancelacion": 100.11,
+      "ventas_positivas": 9492.37,
+      "dato_critico": "producto: M; cancelaciones 9502.86 GBP; neto -10.49 GBP.",
+      "hipotesis": "La causa no está demostrada; contrastar anulaciones, correcciones y asientos contables con las facturas.",
+      "accion": "Conciliar abonos y ventas; clasificar el código como mercancía o ajuste contable antes de modificar precios.",
+      "responsable": "Responsable comercial y administración",
+      "validacion": "Documentar motivos, repetir auditoría y comparar periodos completos equivalentes."
+    }
+  ],
+  "limites": "Grupos país y producto pueden solaparse; no sumar sus importes. No demuestra pérdidas ni causas. Sin costes, descuentos o logística. Hasta 12 alertas ordenadas por importe cancelado.",
+  "consultado_en": "2026-10-28T22:18:12.051687+00:00",
+  "alertas_activas": 1,
+  "grupos_analizados": 1544,
+  "lineas_analizadas": 8557
+}

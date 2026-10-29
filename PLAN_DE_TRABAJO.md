@@ -1,15 +1,6 @@
-# Plan de ejecución — 28 de octubre de 2026
+# Plan y alcance vigentes
 
-## Decisión recomendada
-Auditor agéntico de ventas y cancelaciones de un comercio online real, con UCI Online Retail. Mantener PostgreSQL en Supabase, servidor MCP Python, backend FastAPI con LLM y frontend HTML/JavaScript. No prometer margen ni rentabilidad: no disponemos de costes. La recomendación sustituye la premisa de datos reales de Superstore de las instrucciones anteriores; esas instrucciones se conservan como historial.
-
-## Estado comprobado
-- Existe estructura inicial, requirements.txt y test_db.py.
-- train.csv contiene 9.800 filas y 18 columnas; no contiene Profit, Discount ni Quantity.
-- Supabase: el usuario informa de que creó el proyecto; conexión e importación sin verificar.
-- DATABASE_URL y OPENAI_API_KEY contienen placeholders. No se ha intentado conectar con ellos.
-- No hay repositorio Git inicializado, agente, MCP, frontend ni pruebas del flujo completo.
-- Python por defecto: 3.15.1; preparar un entorno compatible (preferiblemente 3.12 o 3.13) antes de instalar dependencias.
+La aplicación cloud está publicada y conectada con Groq, MCP y Supabase. El plan de cinco horas es la planificación académica, no un registro inventado de tiempos reales. Consultar ESTADO_PROYECTO.md y tests/pruebas.md para evidencias.
 
 ## Plan de cinco horas
 | Fase | Minutos | Resultado y condición para avanzar |
@@ -39,21 +30,3 @@ Guardar SQL del esquema, scripts de importación, dataset con licencia/fuente y 
 
 Bibliotecas candidatas de GitHub: https://github.com/modelcontextprotocol/python-sdk y https://github.com/fastapi/fastapi. Registrar versión y licencia utilizadas una vez instaladas y verificadas.
 
-## Orden inmediato
-1. Obtener y documentar UCI Online Retail; conservar train.csv como archivo previo no válido para rentabilidad.
-2. Preparar entorno y esquema/importación sin modificar tablas existentes sin inspeccionarlas.
-3. Configurar DATABASE_URL en .env desde el panel Connect de Supabase. No pegar contraseñas en chats. Usar una conexión compatible con la red disponible.
-4. Configurar una clave de API de un proveedor LLM en .env; sin acceso a un modelo no puede darse por verificada la parte agéntica.
-5. Ejecutar recuento y conciliación antes del MCP, después conectar agente y frontend.
-6. Crear repositorio en la cuenta y con la visibilidad elegidas por el equipo; comprobar exclusión de secretos antes de publicar.
-
-## Pruebas obligatorias y evidencias
-- Datos: filas importadas, nulos, periodo y sumas conciliados; filas rechazadas documentadas.
-- PostgreSQL: conexión TLS, consultas correctas y rechazo de escritura con rol de lectura.
-- MCP: inicialización, listado y ejecución real de herramientas desde un cliente MCP.
-- Agente: selección de herramientas y respuesta consistente con cifras SQL; pregunta sin datos; rechazo de afirmaciones de beneficio no medible.
-- API/frontend: pregunta y respuesta visibles; entradas inválidas, caída de DB y error de proveedor con mensajes sin secretos.
-- Evidencia: comando, fecha, resultado esperado, resultado observado y log/captura. No marcar PASS si no se ejecutó.
-
-## Defensa de cinco minutos
-Mostrar procedencia y límites del dataset; hacer una pregunta en vivo; enseñar llamada MCP y consulta real; contrastar cifra; enseñar una prueba de error; explicar una limitación y una mejora. Priorizar arquitectura (20%), funcionamiento (20%) y pruebas (20%) sin descuidar datos ni reflexión. Ninguna elección garantiza una nota.

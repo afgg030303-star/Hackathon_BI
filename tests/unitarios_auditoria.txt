@@ -1,0 +1,12 @@
+✔ coste supuesto separado; neto cero no divide por cero (0.747875ms)
+✔ rechaza costes no finitos o fuera de rango (0.137542ms)
+✔ borrador sin alertas no inventa incidencias ni envío (0.116583ms)
+✔ código contable no es pérdida demostrada (1.240667ms)
+ℹ tests 4
+ℹ suites 0
+ℹ pass 4
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 53.311875

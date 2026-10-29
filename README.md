@@ -2,7 +2,7 @@
 
 **Web pública:** https://observatorio-retail-bi.balmyspark1.chatgpt.site
 
-Pregunta por ventas y cancelaciones de un comercio real. El agente usa Groq, una Skill y herramientas MCP para consultar PostgreSQL en Supabase. El panel muestra KPI verificables. No se calculan beneficios: no hay costes en el dataset.
+Audita ventas y cancelaciones de un comercio real, consulta alertas y prepara acciones con un borrador de email. El agente usa Groq, una Skill y herramientas MCP para consultar PostgreSQL en Supabase. El panel muestra KPI verificables. No se calculan beneficios: no hay costes en el dataset.
 
 ## Entrega
 - `investigacion/`: problema, alternativas y fuentes.
@@ -13,7 +13,7 @@ Pregunta por ventas y cancelaciones de un comercio real. El agente usa Groq, una
 - `agents/`, `skills/`, `config/`: agente, Skill y MCP.
 - `tests/`: evidencias reales y resultados.
 - `00_prompts_ia/`: resúmenes de sesiones y relevo sin secretos.
-- `REFLEXION.md`: preguntas pendientes de completar personalmente.
+- `REFLEXION.md`: propuesta basada en el relato del equipo, pendiente de revisión personal de Eva, Sacha y Andrés.
 
 ## Ejecutar localmente
 Python 3.13. Crear `.venv`, instalar `backend/requirements.txt`, copiar `.env.example` a `.env` si no existe. Configurar DATABASE_URL y GROQ_API_KEY. Ejecutar:
@@ -25,7 +25,7 @@ python -m uvicorn main:app --app-dir backend --host 127.0.0.1 --port 8000
 Sin GROQ_API_KEY se utiliza Ollama con qwen3:4b-instruct. No hace falta una API de OpenAI: el modelo openai/gpt-oss-20b se sirve a través de Groq.
 
 ## Despliegue cloud
-`web_publica` usa Vinext/Cloudflare Workers en Sites. Secretos del servidor: GROQ_API_KEY, SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY. Aplicar las migraciones una sola vez sobre la base compartida. La web no depende del Mac. El endpoint MCP Streamable HTTP es `/api/mcp`. La clave publicable solo tiene acceso a agregados UCI mediante bi_tool; las filas están protegidas por RLS. Nunca subir `.env` ni la contraseña de PostgreSQL.
+`web_publica` usa Vinext/Cloudflare Workers en Sites. Secretos del servidor: GROQ_API_KEY, SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY. Aplicar las migraciones 001–003 una sola vez sobre la base compartida; ya están aplicadas en el proyecto actual. La web no depende del Mac. El endpoint MCP Streamable HTTP es `/api/mcp`. La clave publicable solo tiene acceso a agregados UCI mediante bi_tool; las filas están protegidas por RLS. Nunca subir `.env` ni la contraseña de PostgreSQL.
 
 Para compilar el código cloud: `cd web_publica && npm ci && npm run build`. El despliegue Sites se realiza con su flujo de publicación y el project_id guardado; un push a este GitHub por sí solo no despliega Sites.
 
@@ -35,3 +35,15 @@ Groq tiene cuotas: un 429 requiere esperar; el panel SQL sigue funcionando. Las 
 
 ## Colaboración
 Rama de trabajo `desarrollo/agente-bi`; leer COLABORACION.md. Commit/push publica archivos, pull trae los del otro equipo. No hay sincronización automática ni exportación íntegra automática de chats.
+
+## Auditoría y acciones
+Se revisan todos los grupos de país y producto. El centro de auditoría muestra hasta 12 señales y el recuento completo; las reglas son explícitas. Cada señal propone comprobación, responsable y validación. El borrador se descarga como texto y no se envía. La actualización automática funciona cada 60 segundos solo con la página visible.
+
+El escenario de rentabilidad requiere un porcentaje de coste introducido por el usuario. Es una simulación identificada, no beneficio real. No inferimos descuentos ni causas que no estén en los datos.
+
+## Pruebas y defensa
+- `python tests/validar_publico.py`: CSV independiente, API, MCP y 2 preguntas a Groq (consume cuota). BI_TEST_URL permite otro despliegue.
+- `node --test tests/unit/audit.test.mjs`: reglas de presentación, borradores y escenarios.
+- `tests/pruebas.md`: matriz con resultados reales, errores y evidencias.
+- `ENTREGA.md`: cobertura de todos los requisitos y pendientes humanos.
+- `DEFENSA.md`: guion de demostración y preguntas para preparar.

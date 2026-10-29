@@ -20,4 +20,4 @@ Hackathon de BI con datos reales, PostgreSQL/Supabase, agente, Skill, MCP, backe
 - No declarar conexión, agente o prueba como funcional hasta ejecutarlos y conservar evidencia sin secretos.
 
 ## Alcance inmediato
-El usuario autoriza construir el primer prototipo y subir cada bloque terminado a GitHub. Usar Groq con la clave local autorizada; Ollama queda como alternativa sin clave. La web pública usa secretos de Sites y Supabase por HTTP. No esperar al segundo ordenador. No instalar sincronización automática en segundo plano. La base principal del agente es ventas_uci (UCI Online Retail real); conservar ventas_superstore como tabla histórica.
+El usuario autoriza desarrollar el auditor y sus mejoras y subir cada bloque terminado a GitHub. Usar Groq con la clave local autorizada; Ollama queda como alternativa sin clave. La web pública usa secretos de Sites y Supabase por HTTP. No esperar al segundo ordenador. No instalar sincronización automática en segundo plano. La base principal del agente es ventas_uci (UCI Online Retail real); conservar ventas_superstore como tabla histórica.
